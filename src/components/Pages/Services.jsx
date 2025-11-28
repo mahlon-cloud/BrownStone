@@ -25,7 +25,7 @@ export default function ServicesPage() {
         className="bg-fixed w-full relative overflow-hidden"
         style={{
           height: '320px',
-          backgroundImage: "url('/wa.jpg')",
+          backgroundImage: "url('/wa1.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center bottom',
         }}

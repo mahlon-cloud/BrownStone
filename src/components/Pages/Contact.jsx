@@ -12,7 +12,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+    <div className="min-h-screen" style={{ backgroundColor: COLORS.teal, fontFamily: 'Montserrat, sans-serif' }}>
       {/* Full-width banner */}
       <header
         className="bg-fixed w-full relative overflow-hidden"

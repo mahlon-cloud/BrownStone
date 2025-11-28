@@ -17,7 +17,7 @@ export default function AboutPage() {
         className="bg-fixed w-full relative overflow-hidden"
         style={{
           height: '320px',
-          backgroundImage: "url('/jv.jpg')",
+          backgroundImage: "url('/jv1.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center bottom',
         }}
