@@ -76,7 +76,7 @@ export default function Navbar() {
                       'flex items-center gap-2 px-3 py-1 text-lg font-medium whitespace-nowrap transition-all rounded-full',
                       isActive
                         ? 'bg-[#EF641C] text-white font-semibold shadow-md rounded-full px-5 py-2'
-                        : 'text-[#461b05] hover:text-[#EF641C]'
+                        : 'text-black hover:text-[#EF641C]'
                     )}
                   >
                     {l.label}
