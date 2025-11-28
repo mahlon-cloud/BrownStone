@@ -6,7 +6,7 @@ export default function Testimonial() {
     const testimonials = [
     {
       id: 1,
-      name: 'Daspora Investor',
+      name: 'Diaspora Investor',
       quote: 'Working with Brownstone was seamless from start to finish. The team delivered on time and beyond expectations.',
     },
     {
