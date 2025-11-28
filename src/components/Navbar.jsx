@@ -76,7 +76,7 @@ export default function Navbar() {
                       'flex items-center gap-2 px-3 py-1 text-lg font-medium whitespace-nowrap transition-all rounded-full',
                       isActive
                         ? 'bg-[#EF641C] text-white font-semibold shadow-md rounded-full px-5 py-2'
-                        : 'text-white/90 hover:text-[#EF641C]'
+                        : 'text-[#461b05] hover:text-[#EF641C]'
                     )}
                   >
                     {l.label}
@@ -99,7 +99,7 @@ export default function Navbar() {
             transition={{ type: 'spring', stiffness: 120, damping: 20 }}
             className="absolute top-0 right-0 h-16 overflow-hidden shadow-lg z-20"
             style={{
-              backgroundColor: '#00486B',
+              backgroundColor: '#9e9e9e',
               backdropFilter: 'saturate(120%) blur(6px)',
               pointerEvents: expanded ? 'auto' : 'none',
             }}
@@ -128,7 +128,7 @@ export default function Navbar() {
                               'flex items-center px-4 py-1 text-lg font-medium transition-all rounded-full',
                               isActive
                                 ? 'bg-[#EF641C] text-white font-semibold px-5 py-2 rounded-full shadow-md'
-                                : 'text-white/90 hover:text-white/95'
+                                : 'text-[#461b05] hover:text-white/95'
                             )}
                           >
                             {l.label}
@@ -145,7 +145,7 @@ export default function Navbar() {
       </motion.div>
 
       {/* MOBILE NAVBAR */}
-      <div className="lg:hidden fixed top-0 left-0 w-full z-50 bg-[#00486B] py-4 px-6 flex items-center justify-between shadow-md">
+      <div className="lg:hidden fixed top-0 left-0 w-full z-50 bg-[#b8b8b8] py-4 px-6 flex items-center justify-between shadow-md">
         <img src="/brown.png" alt="logo" className="h-6 lg:h-8 w-auto" />
 
         {/* Animated Hamburger / X Icon */}
