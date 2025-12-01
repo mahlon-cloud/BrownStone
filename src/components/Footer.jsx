@@ -46,8 +46,8 @@ export default function Footer() {
         {/* Contact & Social */}
         <div>
           <h4 className="font-semibold text-white mb-3">Contact</h4>
-          <p className="text-sm">info@brownstoneconstruction.com</p>
-          <p className="text-sm mt-1">+233 24 123 4567</p>
+          <p className="text-sm">info@brownstoneltd.com</p>
+          <p className="text-sm mt-1">+233 244 028 773</p>
           <div className="mt-4 flex gap-3">
 
   {/* LinkedIn */}

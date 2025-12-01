@@ -6,7 +6,7 @@ export const metadata = {
   title: "BrownStone",
   description: "A modern webapp containing profile social links and contacts",
   icons: {
-    icon: "/favicon.png?v=4", // Forces browser to refresh
+    icon: "/favco.ico?v=4", // Forces browser to refresh
   },
 };
 
