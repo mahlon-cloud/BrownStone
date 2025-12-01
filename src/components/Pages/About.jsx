@@ -6,7 +6,7 @@ export default function AboutPage() {
   const COLORS = {
     primary: '#EF641C',
     deep: '#411600',
-    teal: '#00486B',
+    teal: '#00486B', opacity: 70,
     muted: '#838385',
   };
 

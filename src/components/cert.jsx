@@ -24,17 +24,17 @@ export default function Cert() {
 
   const panels = [
     {
-      title: 'Our Vision',
+      title: 'Our Signature',
       content:
         'To redefine the future by building a legacy of prosperity — where innovation, sustainability, and human potential shape thriving communities and enduring value.',
     },
     {
-      title: 'Our Mission',
+      title: 'Our Legacy',
       content:
         'To design and deliver premium, transformative projects across residential, commercial, and mixed-use spaces— creating integrated, future-ready ecosystems that advance infrastructure, empower people, generate lasting economic value, and protect the planet.',
     },
     {
-      title: 'Core Values',
+      title: 'Our Delivery',
       content:
         'Integrity: We keep our word. Excellence: Every project reflects precision and pride. Sustainability: Building with the planet and people in mind. Innovation: Leveraging new technologies. Empowerment: Uplifting communities and creating opportunity.',
     },
