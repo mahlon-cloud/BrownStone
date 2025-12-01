@@ -19,12 +19,12 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#00486B] text-gray-200 relative">
-      <div className="container mx-auto px-6 lg:px-20 py-12 grid md:grid-cols-3 gap-8">
+    <footer className="w-full bg-[#00334b] text-gray-200 relative">
+      <div className="w-full max-w-7xl mx-auto px-6 lg:px-20 py-12 grid md:grid-cols-3 gap-8">
         {/* Logo & Description */}
         <div>
           <Link href="/" className="flex items-center text-white font-bold mb-4">
-            <img src="/brown.png" alt="Brownstone Logo" className="h-8" />
+            <img src="/invert.png" alt="Brownstone Logo" className="h-8" />
           </Link>
           <p className="text-sm text-gray-300">
             Redesigning Africa’s Future, Brick by Brick

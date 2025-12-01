@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function HeroSection() {
-  const [heroImage, setHeroImage] = useState('/bkg23.jpg');
+  const [heroImage, setHeroImage] = useState('/bkgnew.jpg');
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -12,18 +12,18 @@ export default function HeroSection() {
     const updateImage = () => {
       const width = window.innerWidth;
       const height = window.innerHeight;
-      let chosen = '/bkg23.jpg';
+      let chosen = '/bkgnew.jpg';
 
       if (width < 768) {
-        chosen = '/Mobile-version3.jpg'; // Mobile
+        chosen = '/ph.jpg'; // Mobile
       } else if (width >= 768 && width <= 1024) {
-        chosen = '/ipad-version3.jpg'; // iPad / tablets
+        chosen = '/ip1.jpg'; // iPad / tablets
       } else if (width >= 1920 && height >= 1080) {
         // Desktop 
-        chosen = '/bkg23.jpg'; // Ultra-wide Desktop (1920px+)
+        chosen = '/bkgnew.jpg'; // Ultra-wide Desktop (1920px+)
       } else if (width >= 1920) {
         // Mac
-        chosen = '/bkg23.jpg';
+        chosen = '/bkgnew.jpg';
       }
 
       // Debug log to help verify which branch runs (remove later)
@@ -58,7 +58,7 @@ export default function HeroSection() {
         {/* Content sits on top of image (no background color) */}
         <div className="absolute inset-0 z-20 flex items-end pb-15 px-6 ml-9">
           <div className="w-full max-w-4xl">
-            <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight text-white" style={{ color: '#EF641C' }}>
+            <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight text-white" style={{ color: '#411600' }}>
               Brownstone Construction Firm
             </h1>
 
@@ -102,7 +102,7 @@ export default function HeroSection() {
           <div className="lg:w-1/2 text-white">
             <h1
               className="text-4xl lg:text-8xl font-extrabold leading-tight"
-              style={{ color: '#EF641C' }}
+              style={{ color: '#411600' }}
             >
               Brownstone Construction Firm
             </h1>

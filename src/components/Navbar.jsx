@@ -75,8 +75,8 @@ export default function Navbar() {
                     className={clsx(
                       'flex items-center gap-2 px-3 py-1 text-lg font-medium whitespace-nowrap transition-all rounded-full',
                       isActive
-                        ? 'bg-[#EF641C] text-white font-semibold shadow-md rounded-full px-5 py-2'
-                        : 'text-black hover:text-[#EF641C]'
+                        ? 'border-2 rounded-full border-[#411600] text-[#d0622a] font-semibold'
+                        : 'text-[#411600] hover:text-[#d0622a]'
                     )}
                   >
                     {l.label}
@@ -99,7 +99,7 @@ export default function Navbar() {
             transition={{ type: 'spring', stiffness: 120, damping: 20 }}
             className="absolute top-0 right-0 h-16 overflow-hidden shadow-lg z-20"
             style={{
-              backgroundColor: '#9e9e9e',
+              backgroundColor: '#c1c1c1',
               backdropFilter: 'saturate(120%) blur(6px)',
               pointerEvents: expanded ? 'auto' : 'none',
             }}
@@ -127,8 +127,8 @@ export default function Navbar() {
                             className={clsx(
                               'flex items-center px-4 py-1 text-lg font-medium transition-all rounded-full',
                               isActive
-                                ? 'bg-[#EF641C] text-white font-semibold px-5 py-2 rounded-full shadow-md'
-                                : 'text-[#461b05] hover:text-white/95'
+                                ? 'border-2 border-[#411600] text-[#d0622a] font-semibold px-5 py-2 rounded-full shadow-md'
+                                : 'text-[#411600] hover:text-[#d0622a]'
                             )}
                           >
                             {l.label}

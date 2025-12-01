@@ -4,7 +4,7 @@ import React from 'react';
 export default function FixedImage() {
   return (
     <section
-      className="relative h-170 w-full bg-fixed bg-right bg-cover"
+      className="w-full relative h-170 w-full bg-fixed bg-right bg-cover"
       style={{ backgroundImage: "url('/fix2.png')" }}
     >
       {/* Overlay for readability */}

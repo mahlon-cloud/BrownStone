@@ -41,8 +41,8 @@ export default function Cert() {
   ];
 
   return (
-    <section className="py-12 bg-[#dedede]">
-      <div className="container mx-auto px-6 lg:px-20">
+    <section className="w-full py-12 bg-[#dedede]">
+      <div className="w-full container mx-auto px-6 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
           {/* Left: big heading (replaces image) */}
           {/* Left: big heading */}

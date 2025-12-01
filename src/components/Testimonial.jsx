@@ -18,7 +18,7 @@ export default function Testimonial() {
 
   return (
 <section className="bg-gray-50 py-12 sm:py-16" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
           <div className="mb-8 sm:mb-10 text-center">
             <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">What Clients Say</h3>
             <p className="text-gray-600 mt-2 text-sm sm:text-base">Feedback from our loyal clients.</p>

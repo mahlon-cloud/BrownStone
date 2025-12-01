@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 export default function CTA() {
   return (
     <section className="py-20 bg-[#f7f7f7]"  style={{fontFamily: 'Montserrat, sans-serif'}}>
-      <div className="max-w-7xl mx-auto px-6 text-center">
+      <div className="w-full max-w-7xl mx-auto px-6 text-center">
         
         <h2 className="text-3xl font-bold text-center" style={{ color: "#012e44" }}>
           Talk to Us

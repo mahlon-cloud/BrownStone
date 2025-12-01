@@ -36,8 +36,8 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="py-20 bg-[#dedede]" style={{fontFamily: 'Montserrat, sans-serif'}}>
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="services" className="w-full py-20 bg-[#dedede]" style={{fontFamily: 'Montserrat, sans-serif'}}>
+      <div className="w-full max-w-7xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-center" style={{ color: "#012e44" }}>
           Our Services
         </h2>
