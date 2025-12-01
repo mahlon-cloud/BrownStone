@@ -34,7 +34,7 @@ export default function Services() {
         "We provide end-to-end project management services, including planning, budgeting, construction supervision, and upgrading existing developments.",
     },
     {
-      title: "Mixed-Use spaces",
+      title: "Mixed-Use Spaces",
       img: "/van.jpg",
       content:
         "We provide holistic environments where residential living, commerce, and tourism thrive together.",
