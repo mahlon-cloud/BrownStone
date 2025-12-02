@@ -8,7 +8,7 @@ const services = [
   { title: 'Sustainable & Smart Infrastructure', desc: 'Solar, EV charging, water management and agri-tech zones.' },
   { title: 'Real Estate Investment Development', desc: 'Build-to-sell or build-to-rent projects with investor support.' },
   { title: 'Project Management & Consultancy', desc: 'End-to-end planning, budgeting and delivery services.' },
-  { title: 'Mixed-Use spaces', desc: 'Environments where residential living, commerce, and tourism thrive.' },
+  { title: 'Mixed-Use Spaces', desc: 'Environments where residential living, commerce, and tourism thrive.' },
 
 ];
 

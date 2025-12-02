@@ -5,35 +5,30 @@ import React from 'react';
 export default function ContactPage() {
   // --- FORM HANDLER ---
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const form = e.target;
-
-    const data = {
-      name: form.name.value,
-      email: form.email.value,
-      subject: form.subject.value,
-      message: form.message.value,
-    };
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (res.ok) {
-        alert("Message sent successfully!");
-        form.reset();
-      } else {
-        alert("Failed to send message.");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Something went wrong.");
-    }
+  const form = e.target;
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    subject: form.subject.value,
+    message: form.message.value,
   };
+
+  const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+
+  if (res.ok) {
+    alert("Message sent successfully!");
+    form.reset();
+  } else {
+    alert("Failed to send message.");
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-[#00486B]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
