@@ -4,41 +4,42 @@ import React, { useState, useRef, useEffect } from 'react';
 const projects = [
   {
     videos: [
-      { src: '/chalet.mp4', title: 'CHALETS' },
-      { src: '/lake.mp4', title: 'LAKEHOUSE' },
-      { src: '/town.mp4', title: 'TOWNHOME' },
+      { src: '/chalet1.mp4', title: 'CHALETS' },
+      { src: '/lake1.mp4', title: 'LAKEHOUSE' },
+      { src: '/town1.mp4', title: 'TOWNHOME' },
     ],
     id: 'celestia',
     title: 'Celestia — Akosombo',
-    description: 'A modern lakeside community combining luxury, wellness, and nature in a private enclave.',
+    description: 'A modern lakeside community combining luxury, wellness, and nature in a private enclave',
     images: [
       { src: '/za4.jpg', alt: 'Celestia view 1' },
-      { src: '/7.png', alt: 'Celestia view 2' },
-      { src: '/5.png', alt: 'Celestia view 3' },
-      { src: '/15.png', alt: 'Celestia view 4' },
-      { src: '/22.png', alt: 'Celestia view 5' },
-      { src: '/23.png', alt: 'Celestia view 6' },
-      { src: '/24.png', alt: 'Celestia view 7' },
-      { src: '/29.png', alt: 'Celestia view 8' },
-      { src: '/31.png', alt: 'Celestia view 9' },
-      { src: '/35.png', alt: 'Celestia view 10' },
-      { src: '/36.png', alt: 'Celestia view 11' },
-      { src: '/39.png', alt: 'Celestia view 12' },
-      { src: '/43.png', alt: 'Celestia view 13' },
-      { src: '/42.png', alt: 'Celestia view 14' },
-      { src: '/27.png', alt: 'Celestia view 15' },
-      { src: '/46.png', alt: 'Celestia view 16' },
+      { src: '/71.png', alt: 'Celestia view 2' },
+      { src: '/51.png', alt: 'Celestia view 3' },
+      { src: '/151.png', alt: 'Celestia view 4' },
+      { src: '/221.png', alt: 'Celestia view 5' },
+      { src: '/231.png', alt: 'Celestia view 6' },
+      { src: '/241.png', alt: 'Celestia view 7' },
+      { src: '/291.png', alt: 'Celestia view 8' },
+      { src: '/311.png', alt: 'Celestia view 9' },
+      { src: '/351.png', alt: 'Celestia view 10' },
+      { src: '/361.png', alt: 'Celestia view 11' },
+      { src: '/391.png', alt: 'Celestia view 12' },
+      { src: '/431.png', alt: 'Celestia view 13' },
+      { src: '/421.png', alt: 'Celestia view 14' },
+      { src: '/271.png', alt: 'Celestia view 15' },
+      { src: '/333.png', alt: 'Celestia view 15' },
+      { src: '/461.png', alt: 'Celestia view 16' },
     ],
   },
   {
     id: 'eastlegon',
-    title: 'East Legon Residence',
-    description: 'High-end urban apartments designed for comfort, modern living, and sustainable infrastructure.',
+    title: 'East Legon Trio',
+    description: 'A trio of high-end townhomes built for legacy living and comfort',
     images: [
       { src: '/wa1.jpg', alt: 'East Legon view 1' },
-      { src: '/ea.jpg', alt: 'East Legon view 2' },
-      { src: '/ea1.jpg', alt: 'East Legon view 3' },
-      { src: '/ea2.jpg', alt: 'East Legon view 4' },
+      { src: '/ea11.jpg', alt: 'East Legon view 2' },
+      { src: '/ea12.jpg', alt: 'East Legon view 3' },
+      { src: '/ea21.jpg', alt: 'East Legon view 4' },
     ],
     videos: [], // Removed video as requested
   },
@@ -162,7 +163,7 @@ export default function PortfolioPage() {
       -------------------------- */}
       {videoModal && (
         <div
-          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center backdrop-blur-sm animate-zoompan"
+          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center backdrop-blur-sm"
           onClick={() => setVideoModal(null)}
         >
           <video
