@@ -41,7 +41,7 @@ export default function HeroSection() {
     <header className="w-full min-h-screen bg-black">
 
       {/* ---------- MOBILE & TABLET (overlay on background like desktop) ---------- */}
-      <div className="lg:hidden relative h-screen overflow-hidden">
+      <div className="w-full lg:hidden relative h-screen overflow-hidden">
         {/* Background image filling the section */}
         <Image
           src={heroImage}

@@ -35,13 +35,12 @@ const projects = [
     title: 'East Legon Residence',
     description: 'High-end urban apartments designed for comfort, modern living, and sustainable infrastructure.',
     images: [
-      { src: '/jv1.jpg', alt: 'East Legon view 1' },
-      { src: '/wa1.jpg', alt: 'East Legon view 2' },
+      { src: '/wa1.jpg', alt: 'East Legon view 1' },
       { src: '/ea.jpg', alt: 'East Legon view 2' },
-      { src: '/ea1.jpg', alt: 'East Legon view 2' },
-      { src: '/ea2.jpg', alt: 'East Legon view 2' },
+      { src: '/ea1.jpg', alt: 'East Legon view 3' },
+      { src: '/ea2.jpg', alt: 'East Legon view 4' },
     ],
-    videos: [{ src: '/projects/eastlegon-tour.mp4', title: 'East Legon Tour' }],
+    videos: [], // Removed video as requested
   },
 ];
 
@@ -51,44 +50,33 @@ export default function PortfolioPage() {
   const [imageModal, setImageModal] = useState(null);
   const contentRefs = useRef({});
 
-  // Slide-down effect
+  // --------------------------
+  // Smooth SLIDE DOWN logic
+  // --------------------------
   useEffect(() => {
     Object.keys(contentRefs.current).forEach((key) => {
       const el = contentRefs.current[key];
       if (!el) return;
       if (active === key) {
-        const scrollHeight = el.scrollHeight;
-        el.style.maxHeight = scrollHeight + 'px';
+        el.style.maxHeight = el.scrollHeight + 'px';
       } else {
         el.style.maxHeight = '0px';
       }
     });
   }, [active]);
 
-  // Close expanded content when clicking outside
-  const handleClickOutside = (e) => {
-    const refs = Object.values(contentRefs.current);
-    const clickedInside = refs.some((ref) => ref && ref.contains(e.target));
-    if (!clickedInside) setActive(null);
-  };
-
-  useEffect(() => {
-    if (active) document.addEventListener('click', handleClickOutside);
-    else document.removeEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, [active]);
-
+  // Do NOT collapse list when modal opens/closes
   const toggle = (id) => setActive(active === id ? null : id);
 
   return (
     <div className="min-h-screen bg-gray-50 px-8 lg:px-32 py-20 font-sans">
-      {/* Page Header */}
+      {/* Header */}
       <header
         className="bg-fixed w-full relative h-96 flex items-center justify-center mb-20"
         style={{
-          backgroundImage: "url('/portfolio-banner.jpg')",
+          backgroundImage: "url('/bkg1.png')",
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'center bottom',
         }}
       >
         <div className="absolute inset-0 bg-black/40" />
@@ -115,36 +103,38 @@ export default function PortfolioPage() {
               </span>
             </button>
 
-            {/* Expanded Content */}
+            {/* EXPANDED CONTENT */}
             <div
               ref={(el) => (contentRefs.current[project.id] = el)}
               className="overflow-hidden transition-max-height duration-500 ease-in-out"
               style={{ maxHeight: '0px' }}
             >
               <div className="bg-white p-8 rounded-xl shadow-lg grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
-                {/* Videos first */}
-                {project.videos.map((vid, idx) => (
-                  <div
-                    key={idx}
-                    className="relative overflow-hidden rounded-lg cursor-pointer group"
-                    onClick={() => setVideoModal(vid.src)}
-                  >
-                    <video
-                      src={vid.src}
-                      muted
-                      loop
-                      preload="metadata"
-                      className="w-full object-cover opacity-70 pointer-events-none transition-transform duration-500 group-hover:scale-105"
-                      onMouseEnter={(e) => e.currentTarget.play()}
-                      onMouseLeave={(e) => e.currentTarget.pause()}
-                    />
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                      <span className="text-white text-lg font-semibold">▶ {vid.title}</span>
-                    </div>
-                  </div>
-                ))}
 
-                {/* Images */}
+                {/* Videos */}
+                {project.videos.length > 0 &&
+                  project.videos.map((vid, idx) => (
+                    <div
+                      key={idx}
+                      className="relative overflow-hidden rounded-lg cursor-pointer group"
+                      onClick={() => setVideoModal(vid.src)}
+                    >
+                      <video
+                        src={vid.src}
+                        muted
+                        loop
+                        preload="metadata"
+                        className="w-full object-cover opacity-70 pointer-events-none transition-transform duration-500 group-hover:scale-105"
+                        onMouseEnter={(e) => e.currentTarget.play()}
+                        onMouseLeave={(e) => e.currentTarget.pause()}
+                      />
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <span className="text-white text-lg font-semibold">▶ {vid.title}</span>
+                      </div>
+                    </div>
+                  ))}
+
+                {/* IMAGES */}
                 {project.images.map((img, idx) => (
                   <div
                     key={idx}
@@ -167,7 +157,9 @@ export default function PortfolioPage() {
         ))}
       </div>
 
-      {/* Video Modal */}
+      {/* -------------------------
+          VIDEO MODAL
+      -------------------------- */}
       {videoModal && (
         <div
           className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center backdrop-blur-sm animate-zoompan"
@@ -182,13 +174,15 @@ export default function PortfolioPage() {
         </div>
       )}
 
-      {/* Image Modal */}
+      {/* -------------------------
+          IMAGE MODAL
+      -------------------------- */}
       {imageModal && (
         <div
           className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center backdrop-blur-sm animate-zoompan"
           onClick={() => setImageModal(null)}
         >
-          <div className="relative">
+          <div className="relative" onClick={(e) => e.stopPropagation()}>
             <img
               src={imageModal}
               alt="Full View"
@@ -204,7 +198,7 @@ export default function PortfolioPage() {
         </div>
       )}
 
-      {/* Zoom/pan animation */}
+      {/* Animations */}
       <style jsx>{`
         @keyframes zoompan {
           0% {
