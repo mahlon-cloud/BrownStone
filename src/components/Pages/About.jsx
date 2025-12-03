@@ -85,7 +85,7 @@ export default function AboutPage() {
 
               <div className="mt-6">
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="inline-block px-4 py-2 rounded-full font-semibold text-white"
                   style={{ backgroundColor: COLORS.primary }}
                 >
