@@ -59,22 +59,43 @@ function Hero() {
         </div>
 
         <div className="relative">
-          <div className="rounded-2xl overflow-hidden shadow-lg">
-            <img
-              src="/town.png"
-              alt="Townhouse hero"
-              className="w-full h-80 object-cover sm:h-96"
-            />
-          </div>
 
-          <div className="absolute left-6 bottom-6 bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-md flex gap-4 items-center">
-            <img src="/floor.jpg" alt="floorplan" className="w-12 h-12 object-contain" />
-            <div>
-              <div className="text-sm font-semibold">3–4 Bedroom Townhouses</div>
-              <div className="text-xs text-gray-600">From 180 sqm • Private parking • Balcony</div>
-            </div>
-          </div>
-        </div>
+  {/* HERO IMAGE WITH TEXT INSIDE */}
+  <div className="relative rounded-2xl overflow-hidden shadow-lg">
+    <img
+      src="/town.png"
+      alt="Townhouse hero"
+      className="w-full h-80 object-cover sm:h-96"
+    />
+
+    {/* TEXT INSIDE THE TOWN IMAGE */}
+    <div className="
+      absolute left-1/2 -translate-x-1/2 
+      top-10 text-white text-center z-20
+    ">
+      <div className="text-2xl font-semibold drop-shadow-xl">
+        2 Bedroom Townhouses
+      </div>
+      <div className="text-sm text-gray-200 drop-shadow-lg mt-1">
+        • Private parking • Balcony
+      </div>
+    </div>
+  </div>
+
+  {/* FLOORPLAN IMAGES */}
+  <div className="
+    absolute left-6 bottom-6 
+    bg-white/80 backdrop-blur-sm 
+    rounded-xl p-4 shadow-md flex gap-4 items-center
+    z-30
+  ">
+    <img src="/Floorplan1.jpg" className="w-40 h-40 object-contain" />
+    <img src="/Floorplan2.jpg" className="w-40 h-40 object-contain" />
+    <img src="/Floorplan3.jpg" className="w-40 h-40 object-contain" />
+  </div>
+
+</div>
+
       </div>
     </section>
   );
