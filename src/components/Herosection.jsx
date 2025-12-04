@@ -108,7 +108,7 @@ export default function HeroSection() {
           />
         </div>
 
-        <div className={`container mx-auto px-8 lg:px-20 relative z-20 flex flex-col lg:flex-row items-center gap-12 ${getContainerClass()}`}>
+        <div className={`container mx-auto px-8 lg:px-7 relative z-20 flex flex-col lg:flex-row items-center gap-12 ${getContainerClass()}`}>
           <div className="lg:w-1/2 text-white">
             <h1 className={`font-extrabold leading-tight ${getTitleClass()}`} style={{ color: '#411600' }}>
               Brownstone Construction Firm

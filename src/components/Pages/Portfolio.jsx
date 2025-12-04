@@ -73,7 +73,7 @@ export default function PortfolioPage() {
     <div className="min-h-screen bg-gray-50 px-8 lg:px-32 py-20 font-sans">
       {/* Header */}
       <header
-        className="bg-fixed w-full relative h-96 flex items-center justify-center mb-20"
+        className="bg-fixed w-full relative h-70 flex items-center justify-center mb-20"
         style={{
           backgroundImage: "url('/bkg1.png')",
           backgroundSize: 'cover',

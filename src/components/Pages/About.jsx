@@ -22,7 +22,7 @@ export default function AboutPage() {
           backgroundPosition: 'center bottom',
         }}
       >
-        <div className="absolute inset-0 bg-black/20" />
+        
         <div className="relative h-full flex flex-col items-center justify-center px-6 text-center">
           <h1
             className="text-white font-extrabold leading-tight"

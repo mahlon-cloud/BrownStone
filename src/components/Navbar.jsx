@@ -50,8 +50,8 @@ export default function Navbar() {
 
   // Adjust slidebar width for normal desktop (1024px-1440px) vs larger screens
   const getExpandedWidth = () => {
-    if (windowWidth >= 1024 && windowWidth < 1440) return '50vw'; // normal desktop
-    return '35vw'; // Mac / large screens
+    if (windowWidth >= 1024 && windowWidth < 1440) return '20vw'; // normal desktop
+    return '37vw'; // Mac / large screens
   };
 
   return (
