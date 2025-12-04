@@ -46,7 +46,7 @@ export default function Cert() {
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
           {/* Left: big heading (replaces image) */}
           {/* Left: big heading */}
-<div className="about-heading flex items-start md:justify-start justify-center md:items-start md:mr-100">
+<div className="about-heading flex items-start md:justify-start justify-center md:items-start md:mr-100 lg:mr-5">
   <h2
     className="leading-tight"
     style={{
@@ -57,8 +57,8 @@ export default function Cert() {
       lineHeight: 1.05,
     }}
   >
-    <span className="block text-3xl md:text-2xl lg:text-5xl">What We</span>
-    <span className="block text-3xl md:text-2xl lg:text-5xl">Stand For</span>
+    <span className="block text-3xl md:text-4xl lg:text-5xl">What We</span>
+    <span className="block text-3xl md:text-4xl lg:text-5xl">Stand For</span>
   </h2>
 </div>
 

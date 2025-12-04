@@ -12,7 +12,7 @@ export default function Navbar() {
   const [expanded, setExpanded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [fadeIn, setFadeIn] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   const links = [
     { label: 'Home', href: '/' },
@@ -23,6 +23,17 @@ export default function Navbar() {
     { label: 'Team', href: '/teams' },
   ];
 
+  // Track window width for responsive slidebar
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    setWindowWidth(window.innerWidth);
+
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Scroll Effects
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -31,14 +42,17 @@ export default function Navbar() {
       const isScrolled = window.scrollY > 40;
       setScrolled(isScrolled);
       setExpanded(isScrolled);
-      setFadeIn(window.scrollY > 20);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const expandedWidth = '35vw';
+  // Adjust slidebar width for normal desktop (1024px-1440px) vs larger screens
+  const getExpandedWidth = () => {
+    if (windowWidth >= 1024 && windowWidth < 1440) return '50vw'; // normal desktop
+    return '35vw'; // Mac / large screens
+  };
 
   return (
     <>
@@ -49,7 +63,7 @@ export default function Navbar() {
         transition={{ duration: 0.5 }}
         className="absolute top-6 left-6 z-50 pointer-events-auto"
       >
-          <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <img src="/brown.png" alt="logo" className="h-6 lg:h-8 w-auto" />
         </Link>
       </motion.div>
@@ -92,7 +106,7 @@ export default function Navbar() {
             aria-hidden={!expanded}
             initial={false}
             animate={{
-              width: expanded ? expandedWidth : 0,
+              width: expanded ? getExpandedWidth() : 0,
               borderTopLeftRadius: expanded ? 32 : 9999,
               borderBottomLeftRadius: expanded ? 32 : 9999,
               opacity: expanded ? 1 : 0.95,
@@ -178,21 +192,20 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* MOBILE SLIDE-IN MENU (from RIGHT) */}
+      {/* MOBILE SLIDE-IN MENU */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ x: "100%" }}
+            initial={{ x: '100%' }}
             animate={{ x: 0 }}
-            exit={{ x: "100%" }}
+            exit={{ x: '100%' }}
             transition={{ duration: 0.3 }}
             className="lg:hidden fixed top-0 right-0 h-full w-3/4 bg-[#00486B] shadow-2xl z-40 py-24 px-6 flex flex-col gap-6"
           >
             {links.map((l) => {
               const isActive =
                 pathname === l.href ||
-                (l.href !== '/' &&
-                  pathname?.startsWith(l.href.replace('#', '')));
+                pathname?.startsWith(l.href.replace('#', ''));
               return (
                 <Link
                   key={l.href}
@@ -200,9 +213,7 @@ export default function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   className={clsx(
                     'text-xl py-3 px-4 rounded-l-full text-white font-medium transition-all w-50',
-                    isActive
-                      ? 'bg-[#EF641C] shadow-md'
-                      : 'hover:bg-white/10'
+                    isActive ? 'bg-[#EF641C] shadow-md' : 'hover:bg-white/10'
                   )}
                 >
                   {l.label}
