@@ -32,7 +32,7 @@ export default function ServicesPage() {
           backgroundPosition: 'center top',
         }}
       >
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-black/5" />
         <div className="relative h-full flex flex-col items-center justify-center px-6 text-center">
           <h1
             className="text-white font-extrabold leading-tight"
