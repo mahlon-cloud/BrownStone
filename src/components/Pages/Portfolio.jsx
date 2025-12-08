@@ -40,6 +40,11 @@ const projects = [
       { src: '/ea11.jpg', alt: 'East Legon view 2' },
       { src: '/ea12.jpg', alt: 'East Legon view 3' },
       { src: '/ea21.jpg', alt: 'East Legon view 4' },
+      { src: '/leg1.jpeg', alt: 'East Legon view 5' },
+      { src: '/leg2.jpeg', alt: 'East Legon view 6' },
+      { src: '/leg3.jpeg', alt: 'East Legon view 7' },
+      { src: '/leg4.jpeg', alt: 'East Legon view 8' },
+      
     ],
     videos: [], // Removed video as requested
   },
@@ -73,7 +78,7 @@ export default function PortfolioPage() {
     <div className="min-h-screen bg-gray-50 px-8 lg:px-32 py-20 font-sans">
       {/* Header */}
       <header
-        className="bg-fixed w-full relative h-70 flex items-center justify-center mb-20"
+        className="bg-fixed w-full relative h-60 flex items-center justify-center mb-20"
         style={{
           backgroundImage: "url('/bkg1.png')",
           backgroundSize: 'cover',

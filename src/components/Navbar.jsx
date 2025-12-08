@@ -14,6 +14,8 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(0);
   const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false);
+  const [slideDropdownOpen, setSlideDropdownOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
 
   const links = [
     { label: 'Home', href: '/' },
@@ -22,7 +24,7 @@ export default function Navbar() {
       label: 'Properties',
       children: [
         { label: 'Townhouses', href: '/townhouse' },
-      ],
+      ]
     },
     { label: 'Services', href: '/services' },
     { label: 'Portfolio', href: '/portfolio' },
@@ -51,14 +53,15 @@ export default function Navbar() {
   }, []);
 
   const getExpandedWidth = () => {
-    if (windowWidth >= 1024 && windowWidth < 2000) return '46vw';
+    if (windowWidth >= 1024 && windowWidth < 2000) return '56vw';
     return '38vw';
   };
 
-  // Helper to check if a link is active
   const checkIsActive = (href) => {
     if (!href) return false;
-    return href === '/' ? pathname === '/' : pathname.startsWith(href);
+    return href === '/'
+      ? pathname === '/'
+      : pathname.startsWith(href);
   };
 
   return (
@@ -75,7 +78,7 @@ export default function Navbar() {
         </Link>
       </motion.div>
 
-      {/* DESKTOP NAVBAR */}
+      {/* DESKTOP NAV */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -84,6 +87,8 @@ export default function Navbar() {
       >
         <div className="relative pointer-events-auto" style={{ height: 64 }}>
           <div className="flex items-center gap-2 pr-3">
+
+            {/* Desktop Links */}
             <div className="flex items-center gap-2 z-10">
               {links.map((l) => {
                 const isActive = checkIsActive(l.href);
@@ -96,14 +101,10 @@ export default function Navbar() {
                       onMouseEnter={() => setDesktopDropdownOpen(true)}
                       onMouseLeave={() => setDesktopDropdownOpen(false)}
                     >
-                      {/* Parent without href, no border */}
-                      <span
-                        className={clsx(
-                          'flex items-center gap-2 px-3 py-1 text-lg font-medium whitespace-nowrap rounded-full text-[#411600]'
-                        )}
-                      >
+                      <span className="flex items-center gap-2 px-3 py-1 text-lg font-medium text-[#411600] whitespace-nowrap cursor-pointer">
                         {l.label}
                       </span>
+
                       <AnimatePresence>
                         {desktopDropdownOpen && (
                           <motion.div
@@ -111,7 +112,6 @@ export default function Navbar() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -5 }}
                             className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-50"
-                            style={{ overflow: 'visible' }}
                           >
                             {l.children.map((child) => (
                               <Link
@@ -119,7 +119,7 @@ export default function Navbar() {
                                 href={child.href}
                                 className={clsx(
                                   'block px-4 py-2 text-gray-800 hover:text-[#EF641C]',
-                                  checkIsActive(child.href) ? 'font-semibold text-[#d0622a]' : ''
+                                  checkIsActive(child.href) && 'font-semibold text-[#d0622a]'
                                 )}
                               >
                                 {child.label}
@@ -139,7 +139,7 @@ export default function Navbar() {
                     className={clsx(
                       'flex items-center gap-2 px-3 py-1 text-lg font-medium whitespace-nowrap transition-all rounded-full',
                       isActive
-                        ? 'border-2 rounded-full border-[#411600] text-[#d0622a] font-semibold'
+                        ? 'border-2 border-[#411600] text-[#d0622a] font-semibold'
                         : 'text-[#411600] hover:text-[#d0622a]'
                     )}
                   >
@@ -152,7 +152,6 @@ export default function Navbar() {
 
           {/* Desktop Slide Bar */}
           <motion.nav
-            aria-hidden={!expanded}
             initial={false}
             animate={{
               width: expanded ? getExpandedWidth() : 0,
@@ -176,7 +175,6 @@ export default function Navbar() {
                   const isActive = checkIsActive(l.href);
 
                   if (l.children) {
-                    const [slideDropdownOpen, setSlideDropdownOpen] = useState(false);
                     return (
                       <div
                         key={l.label}
@@ -184,13 +182,10 @@ export default function Navbar() {
                         onMouseEnter={() => setSlideDropdownOpen(true)}
                         onMouseLeave={() => setSlideDropdownOpen(false)}
                       >
-                        <span
-                          className={clsx(
-                            'flex items-center px-4 py-1 text-lg font-medium rounded-full text-[#411600]'
-                          )}
-                        >
+                        <span className="flex items-center px-4 py-1 text-lg font-medium text-[#411600] cursor-pointer">
                           {l.label}
                         </span>
+
                         <AnimatePresence>
                           {slideDropdownOpen && (
                             <motion.div
@@ -198,7 +193,6 @@ export default function Navbar() {
                               animate={{ opacity: 1, y: 0 }}
                               exit={{ opacity: 0, y: -5 }}
                               className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-50"
-                              style={{ overflow: 'visible' }}
                             >
                               {l.children.map((child) => (
                                 <Link
@@ -206,7 +200,7 @@ export default function Navbar() {
                                   href={child.href}
                                   className={clsx(
                                     'block px-4 py-2 text-gray-800 hover:text-[#EF641C]',
-                                    checkIsActive(child.href) ? 'font-semibold text-[#d0622a]' : ''
+                                    checkIsActive(child.href) && 'font-semibold text-[#d0622a]'
                                   )}
                                 >
                                   {child.label}
@@ -226,7 +220,7 @@ export default function Navbar() {
                       className={clsx(
                         'flex items-center px-4 py-1 text-lg font-medium transition-all rounded-full',
                         isActive
-                          ? 'border-2 border-[#411600] text-[#d0622a] font-semibold px-5 py-2 rounded-full shadow-md'
+                          ? 'border-2 border-[#411600] text-[#d0622a] font-semibold'
                           : 'text-[#411600] hover:text-[#d0622a]'
                       )}
                     >
@@ -240,8 +234,100 @@ export default function Navbar() {
         </div>
       </motion.div>
 
-      {/* MOBILE NAVBAR AND SLIDE-IN MENU */}
-      {/* (unchanged) */}
+      {/* MOBILE NAV */}
+      <div className="lg:hidden fixed top-0 left-0 w-full z-50 bg-[#b8b8b8] py-4 px-6 flex items-center justify-between shadow-md">
+        <img src="/brown.png" alt="logo" className="h-6 w-auto" />
+
+        {/* Hamburger */}
+        <div
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="cursor-pointer w-8 h-6 flex flex-col justify-center"
+        >
+          <motion.span
+            animate={{ rotate: mobileOpen ? 45 : 0, y: mobileOpen ? 6 : 0 }}
+            className="block w-7 h-1 bg-white rounded mb-1"
+          />
+          <motion.span
+            animate={{ opacity: mobileOpen ? 0 : 1 }}
+            className="block w-7 h-1 bg-white rounded mb-1"
+          />
+          <motion.span
+            animate={{ rotate: mobileOpen ? -45 : 0, y: mobileOpen ? -6 : 0 }}
+            className="block w-7 h-1 bg-white rounded"
+          />
+        </div>
+      </div>
+
+      {/* MOBILE MENU */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ duration: 0.3 }}
+            className="lg:hidden fixed top-0 right-0 h-full w-3/4 bg-[#00486B] shadow-2xl z-40 py-24 px-6 flex flex-col gap-4"
+          >
+            {/* Mobile Links */}
+            {links.map((l) => {
+              const isActive = checkIsActive(l.href);
+
+              if (l.children) {
+                return (
+                  <div key={l.label} className="flex flex-col">
+                    <div
+                      className="flex justify-between items-center text-xl py-3 px-4 rounded-l-full text-white cursor-pointer"
+                      onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+                    >
+                      <span>{l.label}</span>
+                      <span>{mobileDropdownOpen ? '−' : '+'}</span>
+                    </div>
+
+                    <AnimatePresence>
+                      {mobileDropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="ml-6 mt-2 flex flex-col gap-2"
+                        >
+                          {l.children.map((child) => (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              onClick={() => setMobileOpen(false)}
+                              className={clsx(
+                                'text-lg text-white/90 py-2',
+                                checkIsActive(child.href) && 'text-[#EF641C] font-semibold'
+                              )}
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+
+              return (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={clsx(
+                    'text-xl py-3 px-4 rounded-l-full text-white font-medium transition-all',
+                    isActive ? 'bg-[#EF641C]' : 'hover:bg-white/10'
+                  )}
+                >
+                  {l.label}
+                </Link>
+              );
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

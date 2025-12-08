@@ -18,7 +18,7 @@ export default function HeroSection() {
       let chosen = '/bkgnew.jpg';
 
       if (width < 768) {
-        chosen = '/ph.jpg'; // Mobile
+        chosen = '/ph6.jpg'; // Mobile
       } else if (width >= 768 && width <= 1024) {
         chosen = '/ip1.jpg'; // iPad / tablets
       } else {
@@ -82,7 +82,7 @@ export default function HeroSection() {
               Redesigning Africa's Future, <br/>Brick by Brick.
             </p>
 
-            <div className="bg-white/10 p-3 rounded-lg border mt-12 md:mt-20" style={{ borderColor: '#838385' }}>
+            <div className="bg-white/10 p-3 rounded-lg border mt-10 md:mt-20" style={{ borderColor: '#838385' }}>
               <h3 className="text-base md:text-lg font-semibold text-white" style={{ color: '#EF641C' }}>Why Brownstone?</h3>
               <ul className="mt-2 text-sm md:text-base text-[#515151]">
                 <li className="mt-1">Full-spectrum development</li>

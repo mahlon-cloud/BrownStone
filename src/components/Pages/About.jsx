@@ -19,7 +19,7 @@ export default function AboutPage() {
           height: '320px',
           backgroundImage: "url('/jv1.jpg')",
           backgroundSize: 'cover',
-          backgroundPosition: 'center bottom',
+          backgroundPosition: 'center top',
         }}
       >
         

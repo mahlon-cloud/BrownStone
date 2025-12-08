@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const COLORS = {
   primary: '#EF641C',
@@ -8,6 +8,7 @@ const COLORS = {
   neutral: 'bg-gray-50',
 };
 
+// ICON COMPONENT
 function Icon({ children }) {
   return (
     <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-white shadow-sm">
@@ -16,29 +17,57 @@ function Icon({ children }) {
   );
 }
 
-// Hero Section
+// *************************************************
+// ScrollReveal Hook
+// *************************************************
+function useScrollReveal() {
+  useEffect(() => {
+    (async () => {
+      if (typeof window !== 'undefined') {
+        const ScrollReveal = (await import('scrollreveal')).default;
+        const sr = ScrollReveal();
+
+        // Animate gallery items
+        sr.reveal('.gallery-item', {
+          distance: '80px',
+          duration: 1200,
+          easing: 'ease-out',
+          origin: 'bottom',
+          reset: false,
+          opacity: 0,
+          interval: 120,
+        });
+      }
+    })();
+  }, []);
+}
+
+// *************************************************
+// HERO SECTION
+// *************************************************
 function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24 grid gap-8 lg:grid-cols-2 items-center">
+        
+        {/* LEFT SIDE TEXT */}
         <div className="space-y-6">
           <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight" style={{ color: COLORS.deep }}>
             Celestia Townhouses
           </h1>
+
           <p className="text-lg text-gray-700 max-w-xl">
             <span className='font-semibold'>
-            Modern, elegant townhouses designed for lakeside living in Akosombo</span> 
-            <br/>
-            <br/>Nestled in Ghana’s emerging luxury destination, each townhome provides 
-            a private retreat, a high-yield vacation rental opportunity, or a peaceful 
-            home base for seasonal escapes. Akosombo’s lakefront serenity, cooler climate, 
-            and growing hospitality market make this an investment in both lifestyle 
-            and long-term value.
+              Modern, elegant townhouses designed for lakeside living in Akosombo
+            </span>
+            <br /><br />
+            Nestled in Ghana’s emerging luxury destination, each townhome provides a private retreat,
+            a high-yield vacation rental opportunity, or a peaceful home base for seasonal escapes.
           </p>
 
           <div className="flex flex-wrap gap-3">
             <a
-              href="/contact"
+              href="/book"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-lg font-semibold shadow"
               style={{ background: COLORS.primary, color: 'white' }}
             >
@@ -58,67 +87,53 @@ function Hero() {
           </div>
         </div>
 
+        {/* RIGHT SIDE HERO IMAGE */}
         <div className="relative">
+          <div className="relative rounded-2xl overflow-hidden shadow-lg">
+            <img src="/br.jpg" alt="Townhouse hero" className="w-full h-80 object-cover sm:h-96" />
 
-  {/* HERO IMAGE WITH TEXT INSIDE */}
-  <div className="relative rounded-2xl overflow-hidden shadow-lg">
-    <img
-      src="/town.png"
-      alt="Townhouse hero"
-      className="w-full h-80 object-cover sm:h-96"
-    />
+            {/* TEXT ON IMAGE */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-10 text-white text-center z-20">
+              <div className="text-2xl font-semibold drop-shadow-xl">2 Bedroom Townhouses</div>
+              <div className="text-sm text-gray-200 drop-shadow-lg mt-1">Rent at your earliest convenience <br/> Master Suite • Open Terrace • Lobby </div>
+            </div>
 
-    {/* TEXT INSIDE THE TOWN IMAGE */}
-    <div className="
-      absolute left-1/2 -translate-x-1/2 
-      top-10 text-white text-center z-20
-    ">
-      <div className="text-2xl font-semibold drop-shadow-xl">
-        2 Bedroom Townhouses
-      </div>
-      <div className="text-sm text-gray-200 drop-shadow-lg mt-1">
-        • Private parking • Balcony
-      </div>
-    </div>
-  </div>
-
-  {/* FLOORPLAN IMAGES */}
-  <div className="
-    absolute left-6 bottom-6 
-    bg-white/80 backdrop-blur-sm 
-    rounded-xl p-4 shadow-md flex gap-4 items-center
-    z-30
-  ">
-    <img src="/Floorplan1.jpg" className="w-40 h-40 object-contain" />
-    <img src="/Floorplan2.jpg" className="w-40 h-40 object-contain" />
-    <img src="/Floorplan3.jpg" className="w-40 h-40 object-contain" />
-  </div>
-
-</div>
+            {/* FLOORPLAN IMAGES */}
+            <div className="
+              absolute left-1/2 -translate-x-1/2 bottom-4
+              bg-white/80 backdrop-blur-sm 
+              rounded-xl p-3 shadow-md flex flex-wrap 
+              gap-3 items-center justify-center
+              w-[90%] max-w-md
+            ">
+              <img src="/Floorplan1.jpg" className="w-24 sm:w-28 md:w-34 h-auto object-contain" />
+              <img src="/Floorplan2.jpg" className="w-24 sm:w-28 md:w-32 h-auto object-contain" />
+              <img src="/Floorplan3.jpg" className="w-24 sm:w-28 md:w-34 h-auto object-contain" />
+            </div>
+          </div>
+        </div>
 
       </div>
     </section>
   );
 }
 
-// Gallery Section (New)
+// *************************************************
+// GALLERY SECTION (with ScrollReveal)
+// *************************************************
 function GalleryGrid() {
+  useScrollReveal();
+
   const gallery = [
-    '/3.png',
-    '/5.png',
-    '/6.png',
-    '/7.png',
-    '/8.png',
-    '/9.png',
-    '/10.png',
-    '/11.png',
-    '/12.png',
-    '/13.png',
+    '/3.png','/5.png','/6.png',
+    '/ab (8).jpeg','/ab (2).jpeg','/ab (7).jpeg','/ab (1).jpeg',
+    '/7.png','/8.png','/9.png','/10.png','/11.png','/12.png','/13.png',
   ];
 
   return (
     <section className="py-12 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold">Gallery</h2>
           <p className="text-gray-600 mt-2">Explore our townhouse designs and surroundings.</p>
@@ -126,16 +141,20 @@ function GalleryGrid() {
 
         <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
           {gallery.map((img, idx) => (
-            <div key={idx} className="rounded-lg overflow-hidden shadow-sm">
-              <img src={img} alt={`Townhouse ${idx + 1}`} className="w-full h-32 sm:h-40 object-cover" />
+            <div key={idx} className="gallery-item rounded-lg overflow-hidden shadow-sm">
+              <img src={img} alt={`Gallery ${idx}`} className="w-full h-32 sm:h-40 object-cover" />
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
 }
 
+// *************************************************
+// FEATURES GRID
+// *************************************************
 function FeaturesGrid() {
   const items = [
     { title: 'Multi-Level Living', desc: 'Multi-level, open-plan living designed for privacy and flexibility.' },
@@ -146,10 +165,12 @@ function FeaturesGrid() {
     { title: 'Balconies & Views', desc: 'Private terraces with lake or landscape views.' },
   ];
 
-  const icons = ['🏡', '✨', '🌞', '🚗', '🌿', '🌅'];
+  const icons = ['🏡','✨','🌞','🚗','🌿','🌅'];
+
   return (
     <section className="py-12 bg-white">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold">Key Features</h2>
           <p className="text-gray-600 mt-2">Everything designed for comfort, aesthetics and lasting value.</p>
@@ -166,23 +187,27 @@ function FeaturesGrid() {
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
 }
 
-// OffPlan Notice
+// *************************************************
+// OFF PLAN SECTION
+// *************************************************
 function OffPlanNotice() {
   return (
     <section className="py-10">
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
         <div className="rounded-2xl border p-6 lg:p-8 bg-gradient-to-r from-white to-orange-50">
           <div className="flex flex-col lg:flex-row lg:items-center lg:gap-6">
+
             <div className="lg:flex-1">
               <h3 className="text-xl font-bold">Off-Plan Customization — Build Your Vision</h3>
               <p className="mt-2 text-gray-700">
-                Reserve early and personalize your townhouse before construction starts. Choose interior themes,
-                kitchen packages, floor finishes and smart-home options.
+                Reserve early and personalize your townhouse before construction starts.
+                Choose interior themes, kitchen packages, floor finishes and smart-home options.
               </p>
 
               <ul className="mt-3 text-sm text-gray-600 grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -191,6 +216,7 @@ function OffPlanNotice() {
                 <li>• Flooring & tiles</li>
                 <li>• Wardrobe layouts</li>
                 <li>• Smart-home integrations</li>
+                <li>• and more.......</li>
               </ul>
             </div>
 
@@ -203,6 +229,7 @@ function OffPlanNotice() {
                 Contact Sales to Customize
               </a>
             </div>
+
           </div>
         </div>
       </div>
@@ -210,26 +237,34 @@ function OffPlanNotice() {
   );
 }
 
-// CTA Section
+// *************************************************
+// CTA SECTION
+// *************************************************
 function CTA() {
   return (
     <section className="flex justify-center py-12 bg-gradient-to-r from-white to-orange-50">
       <div className="max-w-5xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
-          <h3 className="text-xl font-bold">Reserve a Unit Today & Lock In Pre-Construction Pricing</h3>
-          <p className="text-gray-600 mt-1">Limited units available — early buyers enjoy flexible payment plans.</p>
+          <h3 className="text-xl font-bold">
+            Reserve a Unit Today & Lock In Pre-Construction Pricing
+          </h3>
+          <p className="text-gray-600 mt-1">
+            Limited units available — early buyers enjoy flexible payment plans.
+          </p>
         </div>
       </div>
     </section>
   );
 }
 
-// Main Page
+// *************************************************
+// MAIN PAGE EXPORT
+// *************************************************
 export default function TownhousesPage() {
   return (
     <>
       <Hero />
-      <GalleryGrid />       {/* New gallery section */}
+      <GalleryGrid />
       <FeaturesGrid />
       <OffPlanNotice />
       <CTA />
