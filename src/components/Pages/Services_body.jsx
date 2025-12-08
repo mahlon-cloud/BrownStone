@@ -5,7 +5,7 @@ export default function Services() {
   const services = [
     {
       title: "Residential Construction",
-      img: "/house.png",
+      img: "/house.webp",
       content:
         "We design and build high-quality homes and housing developments tailored to the needs of individuals, families, and investors. Our focus is on functional design, modern finishes, and environmental sustainability.",
     },
@@ -23,13 +23,13 @@ export default function Services() {
     },
     {
       title: "Real Estate Investment Development",
-      img: "/investment.png",
+      img: "/investment.webp",
       content:
         "We work with investors to develop build-to-sell or build-to-rent projects. Our team handles planning, approvals, development oversight, and sales & marketing support.",
     },
     {
       title: "Project Management & Consultancy",
-      img: "/pro.jpg",
+      img: "/pro.webp",
       content:
         "We provide end-to-end project management services, including planning, budgeting, construction supervision, and upgrading existing developments.",
     },

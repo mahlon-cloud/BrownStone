@@ -75,11 +75,12 @@ function Hero() {
             </a>
 
             <a
-              href="/book-viewing"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg font-semibold border"
+            href="/brochure.pdf"
+            download="Celestia-Townhouse-Brochure.pdf"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-lg font-semibold border"
             >
               Download Brochure
-            </a>
+              </a>
           </div>
 
           <div className="mt-4 text-sm text-gray-600">
@@ -90,7 +91,7 @@ function Hero() {
         {/* RIGHT SIDE HERO IMAGE */}
         <div className="relative">
           <div className="relative rounded-2xl overflow-hidden shadow-lg">
-            <img src="/br.jpg" alt="Townhouse hero" className="w-full h-80 object-cover sm:h-96" />
+            <img src="/br.webp" alt="Townhouse hero" className="w-full h-80 object-cover sm:h-96" />
 
             {/* TEXT ON IMAGE */}
             <div className="absolute left-1/2 -translate-x-1/2 top-10 text-white text-center z-20">
@@ -125,9 +126,9 @@ function GalleryGrid() {
   useScrollReveal();
 
   const gallery = [
-    '/3.png','/5.png','/6.png',
-    '/ab (8).jpeg','/ab (2).jpeg','/ab (7).jpeg','/ab (1).jpeg',
-    '/7.png','/8.png','/9.png','/10.png','/11.png','/12.png','/13.png',
+    '/3.webp','/5.webp','/6.webp',
+    '/ab (8).webp','/ab (2).webp','/ab (7).webp','/ab (1).webp',
+    '/7.webp','/8.webp','/9.webp','/10.webp','/11.webp','/12.webp','/13.webp',
   ];
 
   return (
@@ -222,7 +223,7 @@ function OffPlanNotice() {
 
             <div className="mt-4 lg:mt-0 lg:w-1/3">
               <a
-                href="/contact"
+                href="/book"
                 className="block text-center px-5 py-3 rounded-lg font-semibold"
                 style={{ background: COLORS.primary, color: 'white' }}
               >

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function HeroSection() {
-  const [heroImage, setHeroImage] = useState('/bkgnew.jpg');
+  const [heroImage, setHeroImage] = useState('/bkgx.jpg');
   const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
@@ -15,14 +15,14 @@ export default function HeroSection() {
     const updateImage = () => {
       const width = window.innerWidth;
       const height = window.innerHeight;
-      let chosen = '/bkgnew.jpg';
+      let chosen = '/bkgx.jpg';
 
       if (width < 768) {
-        chosen = '/ph6.jpg'; // Mobile
+        chosen = '/phx.jpg'; // Mobile
       } else if (width >= 768 && width <= 1024) {
         chosen = '/ip1.jpg'; // iPad / tablets
       } else {
-        chosen = '/bkgnew.jpg'; // Normal desktop / Mac / large screens
+        chosen = '/bkgx.jpg'; // Normal desktop / Mac / large screens
       }
 
       setHeroImage(chosen);
@@ -68,21 +68,20 @@ export default function HeroSection() {
           fill
           className="object-cover"
           priority
-          quality={80}
           sizes="100vw"
         />
 
-        <div className="absolute inset-0 z-20 flex items-end pb-15 px-6 ml-4 md:ml-9">
+        <div className="absolute inset-0 z-20 flex items-end pb-40 px-6 ml-10 md:ml-9">
           <div className="w-full max-w-4xl">
             <h1 className={`font-extrabold leading-tight text-white ${getTitleClass()}`} style={{ color: '#411600' }}>
               Brownstone Construction Firm
             </h1>
 
             <p className={`mt-3 font-semibold text-[#6b6b6b] ${getParagraphClass()}`}>
-              Redesigning Africa's Future, <br/>Brick by Brick.
+              Redesigning Africa's Future, Brick by Brick.
             </p>
 
-            <div className="bg-white/10 p-3 rounded-lg border mt-10 md:mt-20" style={{ borderColor: '#838385' }}>
+            <div className="bg-white/10 p-3 rounded-lg border mt-12 md:mt-20" style={{ borderColor: '#838385' }}>
               <h3 className="text-base md:text-lg font-semibold text-white" style={{ color: '#EF641C' }}>Why Brownstone?</h3>
               <ul className="mt-2 text-sm md:text-base text-[#515151]">
                 <li className="mt-1">Full-spectrum development</li>

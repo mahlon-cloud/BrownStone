@@ -18,7 +18,7 @@ export default function ContactPage() {
         className="bg-fixed w-full relative overflow-hidden"
         style={{
           height: '320px',
-          backgroundImage: "url('/jv1.jpg')",
+          backgroundImage: "url('/jv1.webp')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

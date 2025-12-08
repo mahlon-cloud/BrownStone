@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 
 const images = [
-  '/fix2.png',
+  '/fix2.webp',
   '/za.jpg',
   '/za2.jpg',
   '/za5.jpg',
