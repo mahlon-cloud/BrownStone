@@ -16,25 +16,28 @@ export default function FixedImage() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setFade(false); // start fade out
+      setFade(false); // fade out current image
       setTimeout(() => {
         setCurrent((prev) => (prev + 1) % images.length);
-        setFade(true); // fade in new image
-      }, 1000); // match transition duration
-    }, 4000); // change image every 4s
+        setFade(true); // fade in next image
+      }, 1000);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="w-full relative h-170 overflow-hidden">
-      {/* Background slideshow */}
+    <section className="w-full relative h-[22.5rem] md:h-[30rem] lg:h-[40rem] overflow-hidden">
+      {/* Fixed background slideshow */}
       {images.map((img, index) => (
         <div
           key={index}
-          className={`absolute inset-0 bg-fixed bg-cover bg-right transition-opacity duration-1000 ${
+          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
             index === current ? (fade ? 'opacity-100' : 'opacity-0') : 'opacity-0'
           }`}
-          style={{ backgroundImage: `url('${img}')` }}
+          style={{
+            backgroundImage: `url('${img}')`,
+            backgroundAttachment: 'fixed',
+          }}
         ></div>
       ))}
 

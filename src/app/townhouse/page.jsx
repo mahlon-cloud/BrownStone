@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import Image from 'next/image';
 
 const COLORS = {
   primary: '#EF641C',
@@ -80,7 +81,7 @@ function Hero() {
             className="inline-flex items-center gap-2 px-5 py-3 rounded-lg font-semibold border"
             >
               Download Brochure
-              </a>
+            </a>
           </div>
 
           <div className="mt-4 text-sm text-gray-600">
@@ -91,25 +92,36 @@ function Hero() {
         {/* RIGHT SIDE HERO IMAGE */}
         <div className="relative">
           <div className="relative rounded-2xl overflow-hidden shadow-lg">
-            <img src="/br.webp" alt="Townhouse hero" className="w-full h-80 object-cover sm:h-96" />
+            <Image
+              src="/br.webp"
+              alt="Townhouse hero"
+              width={800}
+              height={600}
+              className="w-full h-80 sm:h-96 object-cover"
+              priority
+            />
 
             {/* TEXT ON IMAGE */}
             <div className="absolute left-1/2 -translate-x-1/2 top-10 text-white text-center z-20">
               <div className="text-2xl font-semibold drop-shadow-xl">2 Bedroom Townhouses</div>
-              <div className="text-sm text-gray-200 drop-shadow-lg mt-1">Rent at your earliest convenience <br/> Master Suite • Open Terrace • Lobby </div>
+              <div className="text-sm text-gray-200 drop-shadow-lg mt-1">
+                Rent at your earliest convenience <br /> Master Suite • Open Terrace • Lobby
+              </div>
             </div>
 
             {/* FLOORPLAN IMAGES */}
-            <div className="
-              absolute left-1/2 -translate-x-1/2 bottom-4
-              bg-white/80 backdrop-blur-sm 
-              rounded-xl p-3 shadow-md flex flex-wrap 
-              gap-3 items-center justify-center
-              w-[90%] max-w-md
-            ">
-              <img src="/Floorplan1.jpg" className="w-24 sm:w-28 md:w-34 h-auto object-contain" />
-              <img src="/Floorplan2.jpg" className="w-24 sm:w-28 md:w-32 h-auto object-contain" />
-              <img src="/Floorplan3.jpg" className="w-24 sm:w-28 md:w-34 h-auto object-contain" />
+            <div
+              className="
+                absolute left-1/2 -translate-x-1/2 bottom-4
+                bg-white/80 backdrop-blur-sm 
+                rounded-xl p-3 shadow-md 
+                flex items-center justify-center gap-2
+                w-[92%] max-w-sm md:max-w-lg
+              "
+            >
+              <Image src="/Floorplan1.jpg" alt="Floorplan 1" width={80} height={80} className="object-contain" />
+              <Image src="/Floorplan2.jpg" alt="Floorplan 2" width={80} height={80} className="object-contain" />
+              <Image src="/Floorplan3.jpg" alt="Floorplan 3" width={80} height={80} className="object-contain" />
             </div>
           </div>
         </div>
@@ -143,7 +155,13 @@ function GalleryGrid() {
         <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
           {gallery.map((img, idx) => (
             <div key={idx} className="gallery-item rounded-lg overflow-hidden shadow-sm">
-              <img src={img} alt={`Gallery ${idx}`} className="w-full h-32 sm:h-40 object-cover" />
+              <Image
+                src={img}
+                alt={`Gallery ${idx}`}
+                width={300}
+                height={200}
+                className="w-full h-32 sm:h-40 object-cover"
+              />
             </div>
           ))}
         </div>

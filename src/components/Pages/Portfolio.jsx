@@ -1,5 +1,7 @@
 'use client';
+
 import React, { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 
 const projects = [
   {
@@ -27,8 +29,8 @@ const projects = [
       { src: '/431.webp', alt: 'Celestia view 13' },
       { src: '/421.webp', alt: 'Celestia view 14' },
       { src: '/271.webp', alt: 'Celestia view 15' },
-      { src: '/333.webp', alt: 'Celestia view 15' },
-      { src: '/461.webp', alt: 'Celestia view 16' },
+      { src: '/333.webp', alt: 'Celestia view 16' },
+      { src: '/461.webp', alt: 'Celestia view 17' },
     ],
   },
   {
@@ -44,9 +46,8 @@ const projects = [
       { src: '/leg2.jpeg', alt: 'East Legon view 6' },
       { src: '/leg3.jpeg', alt: 'East Legon view 7' },
       { src: '/leg4.jpeg', alt: 'East Legon view 8' },
-      
     ],
-    videos: [], // Removed video as requested
+    videos: [],
   },
 ];
 
@@ -54,15 +55,14 @@ export default function PortfolioPage() {
   const [active, setActive] = useState(null);
   const [videoModal, setVideoModal] = useState(null);
   const [imageModal, setImageModal] = useState(null);
+
   const contentRefs = useRef({});
 
-  // --------------------------
-  // Smooth SLIDE DOWN logic
-  // --------------------------
   useEffect(() => {
     Object.keys(contentRefs.current).forEach((key) => {
       const el = contentRefs.current[key];
       if (!el) return;
+
       if (active === key) {
         el.style.maxHeight = el.scrollHeight + 'px';
       } else {
@@ -71,14 +71,14 @@ export default function PortfolioPage() {
     });
   }, [active]);
 
-  // Do NOT collapse list when modal opens/closes
   const toggle = (id) => setActive(active === id ? null : id);
 
   return (
-    <div className="min-h-screen bg-gray-50 px-8 lg:px-32 py-20 font-sans">
-      {/* Header */}
+    <div className="min-h-screen bg-gray-50 px-4 md:px-16 lg:px-32 py-20 font-sans">
+
+      {/* HEADER */}
       <header
-        className="bg-fixed w-full relative h-60 flex items-center justify-center mb-20"
+        className="bg-fixed w-full relative h-56 md:h-72 lg:h-80 flex items-center justify-center mb-16"
         style={{
           backgroundImage: "url('/bkg1.webp')",
           backgroundSize: 'cover',
@@ -86,43 +86,47 @@ export default function PortfolioPage() {
         }}
       >
         <div className="absolute inset-0 bg-black/40" />
-        <h1 className="relative text-white text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+        <h1 className="relative text-white text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
           Our Projects
         </h1>
       </header>
 
-      {/* Project Buttons */}
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-8 mb-16">
+      {/* CONTENT WRAPPER - narrower */}
+      <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-10">
+
         {projects.map((project) => (
           <div key={project.id} className="flex-1">
-            {/* Button */}
+
+            {/* BUTTON */}
             <button
               onClick={() => toggle(project.id)}
-              className="w-full bg-white px-8 py-6 rounded-xl shadow-lg hover:shadow-2xl transition cursor-pointer text-left"
+              className="w-full bg-white px-6 py-5 rounded-xl shadow-lg hover:shadow-2xl transition text-left cursor-pointer"
             >
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800">
+              <h2 className="text-2xl md:text-2xl font-bold text-gray-800">
                 {project.title}
               </h2>
-              <p className="text-gray-600 mt-3 text-lg md:text-xl">{project.description}</p>
+              <p className="text-gray-600 mt-2">
+                {project.description}
+              </p>
               <span className="float-right text-gray-500 mt-2 text-xl">
                 {active === project.id ? '▲' : '▼'}
               </span>
             </button>
 
-            {/* EXPANDED CONTENT */}
+            {/* EXPANDED SECTION */}
             <div
               ref={(el) => (contentRefs.current[project.id] = el)}
               className="overflow-hidden transition-max-height duration-500 ease-in-out"
               style={{ maxHeight: '0px' }}
             >
-              <div className="bg-white p-8 rounded-xl shadow-lg grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+              <div className="bg-white p-6 rounded-xl shadow-lg grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
 
-                {/* Videos */}
+                {/* VIDEOS */}
                 {project.videos.length > 0 &&
                   project.videos.map((vid, idx) => (
                     <div
                       key={idx}
-                      className="relative overflow-hidden rounded-lg cursor-pointer group"
+                      className="relative rounded-lg overflow-hidden cursor-pointer group"
                       onClick={() => setVideoModal(vid.src)}
                     >
                       <video
@@ -130,12 +134,10 @@ export default function PortfolioPage() {
                         muted
                         loop
                         preload="metadata"
-                        className="w-full object-cover opacity-70 pointer-events-none transition-transform duration-500 group-hover:scale-105"
-                        onMouseEnter={(e) => e.currentTarget.play()}
-                        onMouseLeave={(e) => e.currentTarget.pause()}
+                        className="w-full h-32 md:h-40 object-cover opacity-70 transition-transform duration-500 group-hover:scale-105 pointer-events-none"
                       />
                       <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                        <span className="text-white text-lg font-semibold">▶ {vid.title}</span>
+                        <span className="text-white font-semibold">▶ {vid.title}</span>
                       </div>
                     </div>
                   ))}
@@ -144,82 +146,67 @@ export default function PortfolioPage() {
                 {project.images.map((img, idx) => (
                   <div
                     key={idx}
-                    className="relative overflow-hidden rounded-lg cursor-pointer group"
+                    className="relative rounded-lg overflow-hidden cursor-pointer group"
                     onClick={() => setImageModal(img.src)}
                   >
-                    <img
+                    <Image
                       src={img.src}
                       alt={img.alt}
-                      className="w-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+                      width={800}
+                      height={600}
+                      className="w-full h-32 md:h-40 object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-500">
-                      <span className="text-white text-lg font-semibold">{project.title}</span>
+                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                      <span className="text-white md:ml-7 font-semibold">{project.title}</span>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
+
           </div>
         ))}
+
       </div>
 
       {/* -------------------------
-          VIDEO MODAL
+          VIDEO MODAL (Responsive)
       -------------------------- */}
       {videoModal && (
         <div
-          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center backdrop-blur-sm"
+          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
           onClick={() => setVideoModal(null)}
         >
           <video
             src={videoModal}
             controls
             autoPlay
-            className="max-w-4xl max-h-[80vh] rounded-lg shadow-lg"
+            className="max-w-[95vw] max-h-[75vh] w-auto h-auto rounded-lg shadow-xl"
           />
         </div>
       )}
 
       {/* -------------------------
-          IMAGE MODAL
+          IMAGE MODAL (Responsive)
       -------------------------- */}
       {imageModal && (
         <div
-          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center backdrop-blur-sm animate-zoompan"
+          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
           onClick={() => setImageModal(null)}
         >
-          <div className="relative" onClick={(e) => e.stopPropagation()}>
-            <img
+          <div onClick={(e) => e.stopPropagation()}>
+            <Image
               src={imageModal}
               alt="Full View"
-              className="max-w-5xl max-h-[85vh] rounded-lg shadow-lg"
+              width={1600}
+              height={1200}
+              className="max-w-[95vw] max-h-[75vh] w-auto h-auto rounded-lg shadow-xl"
             />
-            <button
-              onClick={() => setImageModal(null)}
-              className="absolute top-3 right-3 text-white bg-black/50 px-3 py-1 rounded-full cursor-pointer hover:bg-black/70 transition"
-            >
-              ✕
-            </button>
           </div>
         </div>
       )}
 
-      {/* Animations */}
       <style jsx>{`
-        @keyframes zoompan {
-          0% {
-            transform: scale(1) translate(0, 0);
-          }
-          50% {
-            transform: scale(1.02) translate(0, -1%);
-          }
-          100% {
-            transform: scale(1) translate(0, 0);
-          }
-        }
-        .animate-zoompan {
-          animation: zoompan 15s ease-in-out infinite;
-        }
         .transition-max-height {
           transition-property: max-height;
         }

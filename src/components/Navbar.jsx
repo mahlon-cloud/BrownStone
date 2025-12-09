@@ -241,7 +241,7 @@ export default function Navbar() {
         {/* Hamburger */}
         <div
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="cursor-pointer w-8 h-6 flex flex-col justify-center"
+          className="cursor-pointer w-8 h-6 flex flex-col justify-center mr-6"
         >
           <motion.span
             animate={{ rotate: mobileOpen ? 45 : 0, y: mobileOpen ? 6 : 0 }}

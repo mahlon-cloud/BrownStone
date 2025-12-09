@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 const services = [
   { title: 'Residential Construction', desc: 'Design and build high-quality homes and developments.' },
@@ -9,7 +10,6 @@ const services = [
   { title: 'Real Estate Investment Development', desc: 'Build-to-sell or build-to-rent projects with investor support.' },
   { title: 'Project Management & Consultancy', desc: 'End-to-end planning, budgeting and delivery services.' },
   { title: 'Mixed-Use Spaces', desc: 'Environments where residential living, commerce, and tourism thrive.' },
-
 ];
 
 export default function ServicesPage() {
@@ -23,16 +23,16 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: COLORS.teal, fontFamily: 'Montserrat, sans-serif' }}>
       {/* Full-width banner */}
-      <header
-        className="bg-fixed w-full relative overflow-hidden"
-        style={{
-          height: '320px',
-          backgroundImage: "url('/wa1.jpg')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center top',
-        }}
-      >
-        <div className="absolute inset-0 bg-black/5" />
+      <header className="relative w-full h-[20rem] md:h-[25rem] lg:h-[20rem] overflow-hidden">
+        <Image
+          src="/wa1.jpg"
+          alt="Services Banner"
+          fill
+          className="object-cover object-top"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/20" />
+
         <div className="relative h-full flex flex-col items-center justify-center px-6 text-center">
           <h1
             className="text-white font-extrabold leading-tight"

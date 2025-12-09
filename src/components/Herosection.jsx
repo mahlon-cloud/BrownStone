@@ -71,7 +71,7 @@ export default function HeroSection() {
           sizes="100vw"
         />
 
-        <div className="absolute inset-0 z-20 flex items-end pb-40 px-6 ml-10 md:ml-9">
+        <div className="absolute inset-0 z-20 flex items-end pb-30 px-6 ml-7 md:ml-9">
           <div className="w-full max-w-4xl">
             <h1 className={`font-extrabold leading-tight text-white ${getTitleClass()}`} style={{ color: '#411600' }}>
               Brownstone Construction Firm
