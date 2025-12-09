@@ -116,12 +116,12 @@ function Hero() {
                 bg-white/80 backdrop-blur-sm 
                 rounded-xl p-3 shadow-md 
                 flex items-center justify-center gap-2
-                w-[92%] max-w-sm md:max-w-lg
+                w-[92%] max-w-xs md:max-w-xl
               "
             >
-              <Image src="/Floorplan1.jpg" alt="Floorplan 1" width={80} height={80} className="object-contain" />
-              <Image src="/Floorplan2.jpg" alt="Floorplan 2" width={80} height={80} className="object-contain" />
-              <Image src="/Floorplan3.jpg" alt="Floorplan 3" width={80} height={80} className="object-contain" />
+              <Image src="/Floorplan1.jpg" alt="Floorplan 1" width={100} height={80} className="object-contain md:w-120 rounded-xl" />
+              <Image src="/Floorplan2.jpg" alt="Floorplan 2" width={100} height={80} className="object-contain md:w-120 rounded-xl" />
+              <Image src="/bvc.webp" alt="Floorplan 3" width={80} height={80} className="object-contain md:w-90 rounded-xl" />
             </div>
           </div>
         </div>
