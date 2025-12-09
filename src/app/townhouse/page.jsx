@@ -102,7 +102,7 @@ function Hero() {
             />
 
             {/* TEXT ON IMAGE */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-10 text-white text-center z-20">
+            <div className="absolute left-1/2 -translate-x-1/2 top-4 lg:top-10 text-white text-center z-20">
               <div className="text-2xl font-semibold drop-shadow-xl">2 Bedroom Townhouses</div>
               <div className="text-sm text-gray-200 drop-shadow-lg mt-1">
                 Rent at your earliest convenience <br /> Master Suite • Open Terrace • Lobby
