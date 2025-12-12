@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 
 export const metadata = {
   title: "BrownStone",
-  description: "A modern webapp containing profile social links and contacts",
+  description: "Brownstone Construction Firm is a Ghana-based property development and construction company committed to delivering high-quality, sustainable, and community-focused housing solutions. Founded in 2024, Brownstone was established in response to the growing demand for modern, thoughtfully designed living spaces in Ghana's expanding urban and peri-urban areas.",
   icons: {
     icon: "/favco.ico?v=4", // Forces browser to refresh
   },
