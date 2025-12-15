@@ -72,8 +72,8 @@ export default function HeroSection() {
         />
 
         <div className="absolute inset-0 z-20 flex items-end pb-30 px-6 ml-7 md:ml-9">
-          <div className="w-full max-w-4xl">
-            <h1 className={`font-extrabold leading-tight text-white ${getTitleClass()}`} style={{ color: '#411600' }}>
+          <div className="w-full max-w-xl">
+            <h1 className={`font-bold leading-tight text-white ${getTitleClass()}`} style={{ color: '#411600' }}>
               Brownstone Construction Firm
             </h1>
 
@@ -107,15 +107,26 @@ export default function HeroSection() {
           />
         </div>
 
-        <div className={`container mx-auto px-8 lg:px-7 relative z-20 flex flex-col lg:flex-row items-center gap-12 ${getContainerClass()}`}>
+        <div className={`container mx-auto px-8 lg:px-7 relative z-20 mb-110 lg:flex-row items-center gap-2 ${getContainerClass()}`}>
           <div className="lg:w-1/2 text-white">
-            <h1 className={`font-extrabold leading-tight ${getTitleClass()}`} style={{ color: '#411600' }}>
-              Brownstone Construction Firm
-            </h1>
 
-            <p className={`mt-4 font-semibold text-[#6b6b6b] ${getParagraphClass()}`}>
-              Redesigning Africa's Future, Brick by Brick.
-            </p>
+  {/* LOGO */}
+  <div className="relative w-72 h-72 lg:w-180 -ml-21 lg:h-180 mb-0 ">
+    <Image
+      src="/Logo5.png"
+      alt="Brownstone logo"
+      fill
+      className="object-contain"
+      priority
+      quality={80}
+      sizes="(min-width: 1024px) 384px, 288px"
+    />
+  </div>
+
+  {/* TAGLINE – pulled up */}
+  <p className={`-mt-70 font-semibold text-[#6b6b6b] ${getParagraphClass()}`}>
+    Redesigning Africa's Future, Brick by Brick.
+  </p>
 
             <div className="bg-white/10 p-6 rounded-lg border mt-6 md:mt-8" style={{ borderColor: '#838385' }}>
               <h3 className="text-2xl md:text-3xl font-semibold" style={{ color: '#EF641C' }}>
