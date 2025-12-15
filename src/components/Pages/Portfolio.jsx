@@ -1,14 +1,15 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const projects = [
   {
     videos: [
-      { src: '/chalet1.mp4', title: 'CHALETS' },
-      { src: '/lake1.mp4', title: 'LAKEHOUSE' },
-      { src: '/town1.mp4', title: 'TOWNHOME' },
+      { src: 'chalet1.mp4', title: 'CHALETS' },
+      { src: 'lake1.mp4', title: 'LAKEHOUSE' },
+      { src: 'town1.mp4', title: 'TOWNHOME' },
     ],
     id: 'celestia',
     title: 'Celestia — Akosombo',
@@ -55,21 +56,7 @@ export default function PortfolioPage() {
   const [active, setActive] = useState(null);
   const [videoModal, setVideoModal] = useState(null);
   const [imageModal, setImageModal] = useState(null);
-
-  const contentRefs = useRef({});
-
-  useEffect(() => {
-    Object.keys(contentRefs.current).forEach((key) => {
-      const el = contentRefs.current[key];
-      if (!el) return;
-
-      if (active === key) {
-        el.style.maxHeight = el.scrollHeight + 'px';
-      } else {
-        el.style.maxHeight = '0px';
-      }
-    });
-  }, [active]);
+  const [playingVideos, setPlayingVideos] = useState({}); // track which videos are playing
 
   const toggle = (id) => setActive(active === id ? null : id);
 
@@ -91,7 +78,7 @@ export default function PortfolioPage() {
         </h1>
       </header>
 
-      {/* CONTENT WRAPPER - narrower */}
+      {/* CONTENT WRAPPER */}
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-10">
 
         {projects.map((project) => (
@@ -102,76 +89,93 @@ export default function PortfolioPage() {
               onClick={() => toggle(project.id)}
               className="w-full bg-white px-6 py-5 rounded-xl shadow-lg hover:shadow-2xl transition text-left cursor-pointer"
             >
-              <h2 className="text-2xl md:text-2xl font-bold text-gray-800">
-                {project.title}
-              </h2>
-              <p className="text-gray-600 mt-2">
-                {project.description}
-              </p>
-              <span className="float-right text-gray-500 mt-2 text-xl">
-                {active === project.id ? '▲' : '▼'}
-              </span>
+              <h2 className="text-2xl md:text-2xl font-bold text-gray-800">{project.title}</h2>
+              <p className="text-gray-600 mt-2">{project.description}</p>
+              <span className="float-right text-gray-500 mt-2 text-xl">{active === project.id ? '▲' : '▼'}</span>
             </button>
 
             {/* EXPANDED SECTION */}
-            <div
-              ref={(el) => (contentRefs.current[project.id] = el)}
-              className="overflow-hidden transition-max-height duration-500 ease-in-out"
-              style={{ maxHeight: '0px' }}
-            >
-              <div className="bg-white p-6 rounded-xl shadow-lg grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
+            <AnimatePresence initial={false}>
+              {active === project.id && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  className="overflow-hidden"
+                >
+                  <div className="bg-white p-6 rounded-xl shadow-lg grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
 
-                {/* VIDEOS */}
-                {project.videos.length > 0 &&
-                  project.videos.map((vid, idx) => (
-                    <div
-                      key={idx}
-                      className="relative rounded-lg overflow-hidden cursor-pointer group"
-                      onClick={() => setVideoModal(vid.src)}
-                    >
-                      <video
-                        src={vid.src}
-                        muted
-                        loop
-                        preload="metadata"
-                        className="w-full h-32 md:h-40 object-cover opacity-70 transition-transform duration-500 group-hover:scale-105 pointer-events-none"
-                      />
-                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                        <span className="text-white font-semibold">▶ {vid.title}</span>
+                   
+                    {/* VIDEOS */}
+{project.videos.map((vid, idx) => (
+  <div
+    key={`${project.id}-${idx}`}
+    className="relative rounded-lg overflow-hidden cursor-pointer group"
+    onClick={() => setVideoModal(vid.src)}
+  >
+    {/* Thumbnail image */}
+    <Image
+      src={`/thumbnails/${vid.src.replace('.mp4', '.webp')}`}
+      alt={vid.title}
+      width={800}
+      height={600}
+      loading="lazy"
+      className="w-full h-32 md:h-40 object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+      <span className="text-white font-semibold">▶ {vid.title}</span>
+    </div>
+  </div>
+))}
+
+{/* VIDEO MODAL */}
+{videoModal && (
+  <div
+    className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+    onClick={() => setVideoModal(null)}
+  >
+    <video
+      src={videoModal}
+      controls
+      autoPlay
+      className="max-w-[95vw] max-h-[75vh] w-auto h-auto rounded-lg shadow-xl"
+    />
+  </div>
+)}
+
+                    {/* IMAGES */}
+                    {project.images.map((img, idx) => (
+                      <div
+                        key={idx}
+                        className="relative rounded-lg overflow-hidden cursor-pointer group"
+                        onClick={() => setImageModal(img.src)}
+                      >
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          width={800}
+                          height={600}
+                          loading="lazy"
+                          className="w-full h-32 md:h-40 object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                          <span className="text-white md:ml-7 font-semibold">{project.title}</span>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
 
-                {/* IMAGES */}
-                {project.images.map((img, idx) => (
-                  <div
-                    key={idx}
-                    className="relative rounded-lg overflow-hidden cursor-pointer group"
-                    onClick={() => setImageModal(img.src)}
-                  >
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      width={800}
-                      height={600}
-                      className="w-full h-32 md:h-40 object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                      <span className="text-white md:ml-7 font-semibold">{project.title}</span>
-                    </div>
                   </div>
-                ))}
-              </div>
-            </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
           </div>
         ))}
 
       </div>
 
-      {/* -------------------------
-          VIDEO MODAL (Responsive)
-      -------------------------- */}
+      {/* VIDEO MODAL */}
       {videoModal && (
         <div
           className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
@@ -186,9 +190,7 @@ export default function PortfolioPage() {
         </div>
       )}
 
-      {/* -------------------------
-          IMAGE MODAL (Responsive)
-      -------------------------- */}
+      {/* IMAGE MODAL */}
       {imageModal && (
         <div
           className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
@@ -200,17 +202,13 @@ export default function PortfolioPage() {
               alt="Full View"
               width={1600}
               height={1200}
+              loading="lazy"
               className="max-w-[95vw] max-h-[75vh] w-auto h-auto rounded-lg shadow-xl"
             />
           </div>
         </div>
       )}
 
-      <style jsx>{`
-        .transition-max-height {
-          transition-property: max-height;
-        }
-      `}</style>
     </div>
   );
 }
