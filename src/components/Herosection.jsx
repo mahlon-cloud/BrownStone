@@ -60,38 +60,39 @@ export default function HeroSection() {
   return (
     <header className="w-full min-h-screen bg-black">
 
-      {/* ---------- MOBILE & TABLET ---------- */}
-      <div className="w-full lg:hidden relative h-screen overflow-hidden">
-        <Image
-          src={heroImage}
-          alt="Brownstone Construction - Hero Background"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
+      <div className="lg:hidden absolute inset-0 z-20 flex items-end pb-24 px-6 md:px-10">
+  <div className="w-full max-w-xl -mb-10">
 
-        <div className="absolute inset-0 z-20 flex items-end pb-30 px-6 ml-7 md:ml-9">
-          <div className="w-full max-w-xl">
-            <h1 className={`font-bold leading-tight text-white ${getTitleClass()}`} style={{ color: '#411600' }}>
-              Brownstone Construction Firm
-            </h1>
+    {/* LOGO */}
+    <div className="relative w-40 h-40 md:w-52 md:h-52 mb-2">
+      <Image
+        src="/Logo5.png"
+        alt="Brownstone logo"
+        fill
+        className="object-contain"
+        priority
+      />
+    </div>
 
-            <p className={`mt-3 font-semibold text-[#6b6b6b] ${getParagraphClass()}`}>
-              Redesigning Africa's Future, Brick by Brick.
-            </p>
+    {/* TAGLINE */}
+    <p className={`font-semibold text-[#6b6b6b] ${getParagraphClass()}`}>
+      Redesigning Africa&apos;s Future, Brick by Brick.
+    </p>
 
-            <div className="bg-white/10 p-3 rounded-lg border mt-12 md:mt-20" style={{ borderColor: '#838385' }}>
-              <h3 className="text-base md:text-lg font-semibold text-white" style={{ color: '#EF641C' }}>Why Brownstone?</h3>
-              <ul className="mt-2 text-sm md:text-base text-[#515151]">
-                <li className="mt-1">Full-spectrum development</li>
-                <li className="mt-1">Sustainable systems</li>
-                <li className="mt-1">Local expertise with global standards</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+    {/* WHY BROWNSTONE */}
+    <div className="bg-white/10 p-3 md:p-4 rounded-lg border mt-6 md:mt-10" style={{ borderColor: '#838385' }}>
+      <h3 className="text-base md:text-lg font-semibold" style={{ color: '#EF641C' }}>
+        Why Brownstone?
+      </h3>
+      <ul className="mt-2 text-sm md:text-base text-[#515151]">
+        <li className="mt-1">Full-spectrum development</li>
+        <li className="mt-1">Sustainable systems</li>
+        <li className="mt-1">Local expertise with global standards</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
 
       {/* ---------- DESKTOP ---------- */}
       <div className="hidden lg:flex h-screen items-center relative overflow-hidden">
