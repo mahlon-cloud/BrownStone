@@ -175,21 +175,6 @@ export default function PortfolioPage() {
 
       </div>
 
-      {/* VIDEO MODAL */}
-      {videoModal && (
-        <div
-          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
-          onClick={() => setVideoModal(null)}
-        >
-          <video
-            src={videoModal}
-            controls
-            autoPlay
-            className="max-w-[95vw] max-h-[75vh] w-auto h-auto rounded-lg shadow-xl"
-          />
-        </div>
-      )}
-
       {/* IMAGE MODAL */}
       {imageModal && (
         <div
