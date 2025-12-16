@@ -85,14 +85,14 @@ export default function HeroSection() {
 
       {/* Tagline */}
       <p
-        className={`mb-18 font-semibold text-[#6b6b6b] text-2xl ml-9`}
+        className={`mb-15 font-semibold text-[#6b6b6b] text-2xl ml-6`}
       >
         Redesigning Africa&apos;s Future, <br/>Brick by Brick.
       </p>
 
       {/* Why Brownstone */}
       <div
-        className="bg-white/10 p-3 pl-4 rounded-lg border mt-12 md:mt-20 ml-9"
+        className="bg-white/10 p-3 pl-4 rounded-lg border mt-12 md:mt-20 ml-6"
         style={{ borderColor: '#838385', marginRight: '60px' }}
       >
         <h3
