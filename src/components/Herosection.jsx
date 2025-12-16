@@ -57,40 +57,59 @@ export default function HeroSection() {
     return 'mt-10 ml-6'; // Tablets & mobile
   };
 
+  {/* ---------- Mobile ---------- */}
   return (
-    <header className="w-full min-h-screen bg-black">
+    <header className="w-full min-h-screen">
+      <div className="w-full lg:hidden relative h-screen overflow-hidden">
+  {/* Background Image */}
+  <Image
+    src={heroImage}
+    alt="Brownstone Construction - Hero Background"
+    fill
+    className="object-cover"
+    priority
+    sizes="100vw"
+  />
 
-      <div className="lg:hidden absolute inset-0 z-20 flex items-end pb-24 px-6 md:px-10">
-  <div className="w-full max-w-xl -mb-10">
-
-    {/* LOGO */}
-    <div className="relative w-40 h-40 md:w-52 md:h-52 mb-2">
+  {/* Content Overlay */}
+  <div className="absolute inset-0 z-20 flex items-end pb-30 px-6 ml-3 md:ml-9">
+    <div className="w-full">
       <Image
-        src="/Logo5.png"
-        alt="Brownstone logo"
-        fill
-        className="object-contain"
-        priority
-      />
+      src="/Logo5.png"
+      alt="Brownstone logo"
+      fill
+      className="object-contain"
+      priority
+      quality={80}
+    />
+
+      {/* Tagline */}
+      <p
+        className={`mb-18 font-semibold text-[#6b6b6b] text-2xl ml-9`}
+      >
+        Redesigning Africa&apos;s Future, <br/>Brick by Brick.
+      </p>
+
+      {/* Why Brownstone */}
+      <div
+        className="bg-white/10 p-3 pl-4 rounded-lg border mt-12 md:mt-20 ml-9"
+        style={{ borderColor: '#838385', marginRight: '60px' }}
+      >
+        <h3
+          className="text-base md:text-lg font-semibold"
+          style={{ color: '#EF641C' }}
+        >
+          Why Brownstone?
+        </h3>
+
+        <ul className="mt-2 text-sm md:text-base text-[#515151]">
+          <li className="mt-1">Full-spectrum development</li>
+          <li className="mt-1">Sustainable systems</li>
+          <li className="mt-1">Local expertise with global standards</li>
+        </ul>
+      </div>
+
     </div>
-
-    {/* TAGLINE */}
-    <p className={`font-semibold text-[#6b6b6b] ${getParagraphClass()}`}>
-      Redesigning Africa&apos;s Future, Brick by Brick.
-    </p>
-
-    {/* WHY BROWNSTONE */}
-    <div className="bg-white/10 p-3 md:p-4 rounded-lg border mt-6 md:mt-10" style={{ borderColor: '#838385' }}>
-      <h3 className="text-base md:text-lg font-semibold" style={{ color: '#EF641C' }}>
-        Why Brownstone?
-      </h3>
-      <ul className="mt-2 text-sm md:text-base text-[#515151]">
-        <li className="mt-1">Full-spectrum development</li>
-        <li className="mt-1">Sustainable systems</li>
-        <li className="mt-1">Local expertise with global standards</li>
-      </ul>
-    </div>
-
   </div>
 </div>
 
@@ -107,7 +126,6 @@ export default function HeroSection() {
             sizes="100vw"
           />
         </div>
-
         <div className={`container mx-auto px-8 lg:px-7 relative z-20 mb-110 lg:flex-row items-center gap-2 ${getContainerClass()}`}>
           <div className="lg:w-1/2 text-white">
 
