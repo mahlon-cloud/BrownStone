@@ -1,32 +1,22 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 export default function HeroSection() {
   const [heroImage, setHeroImage] = useState('/bkgx.jpg');
-  const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const updateWindowWidth = () => setWindowWidth(window.innerWidth);
-
     const updateImage = () => {
       const width = window.innerWidth;
-      const height = window.innerHeight;
-      let chosen = '/bkgx.jpg';
 
       if (width < 768) {
-        chosen = '/phx.jpg'; // Mobile
-      } else if (width >= 768 && width <= 1024) {
-        chosen = '/ip1.jpg'; // iPad / tablets
+        setHeroImage('/phx.jpg'); // Mobile
+      } else if (width < 1024) {
+        setHeroImage('/ip1.jpg'); // Tablet
       } else {
-        chosen = '/bkgx.jpg'; // Normal desktop / Mac / large screens
+        setHeroImage('/bkgx.jpg'); // Desktop
       }
-
-      setHeroImage(chosen);
-      updateWindowWidth();
     };
 
     updateImage();
@@ -34,134 +24,90 @@ export default function HeroSection() {
     return () => window.removeEventListener('resize', updateImage);
   }, []);
 
-  // Helper to adjust title sizes for different screens
-  const getTitleClass = () => {
-    if (windowWidth < 768) return 'text-3xl';
-    if (windowWidth >= 768 && windowWidth < 1024) return 'text-4xl';
-    if (windowWidth >= 1024 && windowWidth < 1440) return 'text-6xl'; // Normal desktop
-    return 'text-8xl'; // Mac / large screens
-  };
-
-  // Helper to adjust paragraph sizes
-  const getParagraphClass = () => {
-    if (windowWidth < 768) return 'text-base';
-    if (windowWidth >= 768 && windowWidth < 1024) return 'text-lg';
-    if (windowWidth >= 1024 && windowWidth < 1440) return 'text-2xl'; // Normal desktop
-    return 'text-4xl'; // Mac / large screens
-  };
-
-  // Adjust container spacing for normal desktop
-  const getContainerClass = () => {
-    if (windowWidth >= 1024 && windowWidth < 1440) return 'mt-16 ml-10'; // Normal desktop
-    if (windowWidth >= 1440) return 'mt-30 ml-20'; // Large / Mac
-    return 'mt-10 ml-6'; // Tablets & mobile
-  };
-
-  {/* ---------- Mobile ---------- */}
   return (
-    <header className="w-full min-h-screen">
-      <div className="w-full lg:hidden relative h-screen overflow-hidden">
-  {/* Background Image */}
-  <Image
-    src={heroImage}
-    alt="Brownstone Construction - Hero Background"
-    fill
-    className="object-cover"
-    priority
-    sizes="100vw"
-  />
+    <header className="w-full min-h-screen relative overflow-hidden">
 
-  {/* Content Overlay */}
-  <div className="absolute inset-0 z-20 flex items-end pb-30 px-6 ml-3 md:ml-9">
-    <div className="w-full">
-      <Image
-      src="/Logo5.png"
-      alt="Brownstone logo"
-      fill
-      className="object-contain"
-      priority
-      quality={80}
-    />
+      {/* ================= MOBILE ================= */}
+      <div className="lg:hidden relative min-h-[100svh]">
+        <Image
+        src={heroImage}
+        alt="Brownstone Construction - Mobile Hero"
+        fill
+        className="object-cover"
+        priority
+        />
 
-      {/* Tagline */}
-      <p
-        className={`mb-15 font-semibold text-[#6b6b6b] text-2xl ml-6`}
-      >
-        Redesigning Africa&apos;s Future, <br/>Brick by Brick.
-      </p>
-
-      {/* Why Brownstone */}
-      <div
-        className="bg-white/10 p-3 pl-4 rounded-lg border mt-12 md:mt-20 ml-6"
-        style={{ borderColor: '#838385', marginRight: '60px' }}
-      >
-        <h3
-          className="text-base md:text-lg font-semibold"
-          style={{ color: '#EF641C' }}
+        <div className="absolute inset-0 z-20 flex flex-col justify-end px-14 pb-40 sm:pb-12">
+          <p className=" text-3xl sm:text-4xl font-semibold leading-tight text-[#411600]">
+            Redesigning Africa’s Future,<br />
+            Brick by Brick
+          </p>
+        <div className=" bg-white/10 p-4 rounded-lg border mt-10"
+        style={{ borderColor: '#838385' }}
         >
-          Why Brownstone?
-        </h3>
-
-        <ul className="mt-2 text-sm md:text-base text-[#515151]">
-          <li className="mt-1">Full-spectrum development</li>
-          <li className="mt-1">Sustainable systems</li>
-          <li className="mt-1">Local expertise with global standards</li>
+      <h3 className="text-xl font-semibold mb-2 text-[#EF641C]">
+        Why Brownstone?
+      </h3>
+      <ul className="text-base text-[#515151] space-y-1">
+        <li>Full-spectrum development</li>
+        <li>Sustainable systems</li>
+        <li>Global standards, local expertise</li>
         </ul>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-      {/* ---------- DESKTOP ---------- */}
-      <div className="hidden lg:flex h-screen items-center relative overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={heroImage}
-            alt="Brownstone Construction - Hero Background"
-            fill
-            className="object-cover"
-            priority
-            quality={85}
-            sizes="100vw"
-          />
         </div>
-        <div className={`container mx-auto px-8 lg:px-7 relative z-20 mb-110 lg:flex-row items-center gap-2 ${getContainerClass()}`}>
-          <div className="lg:w-1/2 text-white">
+        </div>
+        </div>
 
-  {/* LOGO */}
-  <div className="relative w-72 h-72 lg:w-180 -ml-21 lg:h-180 mb-0 ">
-    <Image
-      src="/Logo5.png"
-      alt="Brownstone logo"
-      fill
-      className="object-contain"
-      priority
-      quality={80}
-      sizes="(min-width: 1024px) 384px, 288px"
-    />
-  </div>
+      {/* ================= DESKTOP (UNCHANGED VISUALLY) ================= */}
+      <div className="hidden lg:flex h-screen relative overflow-hidden">
+        <Image
+          src={heroImage}
+          alt="Brownstone Construction - Desktop Hero"
+          fill
+          className="object-cover"
+          priority
+          quality={85}
+        />
 
-  {/* TAGLINE – pulled up */}
-  <p className={`-mt-70 font-semibold text-[#6b6b6b] ${getParagraphClass()}`}>
-    Redesigning Africa's Future, Brick by Brick.
-  </p>
+        <div className="relative z-20 w-full flex items-center mb-12">
+          <div className="container mx-auto ">
+            <div className="w-1/2 text-left">
 
-            <div className="bg-white/10 p-6 rounded-lg border mt-6 md:mt-8" style={{ borderColor: '#838385' }}>
-              <h3 className="text-2xl md:text-3xl font-semibold" style={{ color: '#EF641C' }}>
-                Why Brownstone?
-              </h3>
-              <ul className="mt-3 text-lg md:text-xl text-[#515151]">
-                <li className="mt-2">
-                  Full-spectrum development: Design & build community infrastructure
-                </li>
-                <li className="mt-1">Sustainable systems: Solar, EV charging, water management</li>
-                <li className="mt-1">Local expertise with global standards</li>
-              </ul>
+              {/* Tagline */}
+              <p className="mt-12 text-6xl font-semibold leading-tight text-[#411600]">
+                Reinventing Africa’s Future, 
+                <br/> Brick by Brick                
+              </p>
+
+              {/* Why Brownstone */}
+              <div
+                className="bg-white/10 p-6 rounded-lg border mt-12"
+                style={{ borderColor: '#838385' }}
+              >
+                <h3
+                  className="text-3xl font-semibold mb-3"
+                  style={{ color: '#EF641C' }}
+                >
+                  Why Brownstone?
+                </h3>
+
+                <ul className="text-xl text-[#515151] space-y-2">
+                  <li>
+                    Full-spectrum development: Design & build community infrastructure
+                  </li>
+                  <li>
+                    Sustainable systems: Solar, EV charging, water management
+                  </li>
+                  <li>
+                    Local expertise with global standards
+                  </li>
+                </ul>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
+
     </header>
   );
 }
