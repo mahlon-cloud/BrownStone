@@ -37,12 +37,12 @@ export default function HeroSection() {
         priority
         />
 
-        <div className="absolute inset-0 z-20 flex flex-col justify-end px-6 pb-10 sm:pb-12">
-          <p className=" text-3xl sm:text-4xl font-semibold leading-tight text-[#411600]">
+        <div className="absolute inset-0 z-20 flex flex-col justify-end px-18 pb-20 sm:pb-12">
+          <p className=" text-3xl sm:text-4xl font-semibold pb-11 leading-tight text-[#411600]">
             Redesigning Africa’s Future,<br />
             Brick by Brick
           </p>
-        <div className=" bg-white/10 p-4 rounded-lg border mt-8"
+        <div className=" bg-white/10 p-4 rounded-lg border mt-10"
         style={{ borderColor: '#838385' }}
         >
       <h3 className="text-xl font-semibold mb-2 text-[#EF641C]">
