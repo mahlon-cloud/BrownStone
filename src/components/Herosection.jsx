@@ -37,7 +37,7 @@ export default function HeroSection() {
         priority
         />
 
-        <div className="absolute inset-0 z-20 flex flex-col justify-end px-18 pb-20 sm:pb-12">
+        <div className="absolute inset-0 z-20 flex flex-col justify-end px-14 pb-16 sm:pb-12">
           <p className=" text-3xl sm:text-4xl font-semibold pb-11 leading-tight text-[#411600]">
             Redesigning Africa’s Future,<br />
             Brick by Brick
