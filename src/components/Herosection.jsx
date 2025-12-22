@@ -39,7 +39,7 @@ export default function HeroSection() {
 
         <div className="absolute inset-0 z-20 flex flex-col justify-end px-14 pb-16 sm:pb-12">
           <p className=" text-3xl sm:text-4xl font-semibold pb-11 leading-tight text-[#411600]">
-            Redesigning Africa’s Future,<br />
+            Reinventing Africa’s Future,<br />
             Brick by Brick
           </p>
         <div className=" bg-white/10 p-4 rounded-lg border mt-10"
