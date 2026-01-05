@@ -35,7 +35,7 @@ export default function ContactPage() {
           <div className="mt-3 w-24 h-1 rounded bg-[#EF641C]" />
 
           <p className="mt-4 max-w-3xl text-sm md:text-base text-white/90">
-            Get in touch with Brownstone Construction Firm — Redesigning Africa’s Future, Brick by Brick.
+            Get in touch with Brownstone Construction Firm — Reinventing Africa’s Future, Brick by Brick.
           </p>
         </div>
       </header>

@@ -24,7 +24,7 @@ export default function Footer() {
             <img src="/invert.png" alt="Brownstone Logo" className="h-8" />
           </Link>
           <p className="text-sm text-gray-300">
-            Redesigning Africa's Future, Brick by Brick
+            Reinventing Africa's Future, Brick by Brick
           </p>
         </div>
 
