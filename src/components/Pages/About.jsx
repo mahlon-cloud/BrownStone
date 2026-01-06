@@ -34,7 +34,7 @@ export default function AboutPage() {
           <div className="mt-3 w-24 h-1 rounded bg-[#EF641C]" />
 
           <p className="mt-4 max-w-3xl text-sm md:text-base text-white/90">
-            Brownstone Construction Firm — Redesigning Africa’s Future, Brick by Brick.
+            Brownstone Construction Firm — Reinventing Africa’s Future, Brick by Brick.
           </p>
         </div>
       </header>
@@ -129,13 +129,12 @@ export default function AboutPage() {
             <p className="text-gray-700 leading-relaxed mb-4">
               Led by a seasoned management team with combined experience in development, construction, and real estate investment,
               our projects are guided by experts who understand both the local market and global standards.
+              <br/>
+              <br/>
+              By integrating modern construction technologies, data-driven planning tools, and sustainable building practices, 
+              our team delivers efficient, resilient, and future-ready developments. We leverage innovation to optimize design, 
+              reduce environmental impact, and ensure long-term value for communities, partners, and investors.
             </p>
-
-            <ul className="space-y-3 text-gray-700">
-              <li><strong>CEO:</strong> Experienced property developer & strategic leader</li>
-              <li><strong>Head of Construction:</strong> Licensed engineer with large-scale delivery experience</li>
-              <li><strong>Head of Development:</strong> Planner & urban designer focused on liveable communities</li>
-            </ul>
           </div>
         </section>
 

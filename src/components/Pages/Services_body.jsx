@@ -35,7 +35,7 @@ export default function Services() {
     },
     {
       title: "Mixed-Use Spaces",
-      img: "/van.jpg",
+      img: "/van3.jpg",
       content:
         "We provide holistic environments where residential living, commerce, and tourism thrive together.",
     },
