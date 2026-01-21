@@ -76,8 +76,8 @@ function Hero() {
             </a>
 
             <a
-            href="/Celestia-Townhouse-Brochure.pdf"
-            download="Celestia-Townhouse-Brochure.pdf"
+            href="/Celestia_Townhouse_Brochure.pdf"
+            download="Celestia_Townhouse_Brochure.pdf"
             className="inline-flex items-center gap-2 px-5 py-3 rounded-lg font-semibold border"
             >
               Download Brochure
