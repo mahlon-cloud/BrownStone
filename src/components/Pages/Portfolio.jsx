@@ -18,7 +18,7 @@ const projects = [
   },
   {
     videos: [
-      { src: '/eastlegon/Legon.mp4', title: 'EAST LEGON TRIO' },
+      { src: '/eastlegon/Legon1.mp4', title: 'EAST LEGON TRIO' },
     ],
     id: 'eastlegon',
     title: 'East Legon Trio',
