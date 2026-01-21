@@ -76,7 +76,7 @@ function Hero() {
             </a>
 
             <a
-            href="/Celestia Townhouses Brochure.pdf"
+            href="/Celestia-Townhouse-Brochure.pdf"
             download="Celestia-Townhouse-Brochure.pdf"
             className="inline-flex items-center gap-2 px-5 py-3 rounded-lg font-semibold border"
             >
@@ -138,9 +138,9 @@ function GalleryGrid() {
   useScrollReveal();
 
   const gallery = [
-    '/3.webp','/5.webp','/6.webp',
     '/ab (8).webp','/ab (2).webp','/ab (7).webp','/ab (1).webp',
-    '/7.webp','/8.webp','/9.webp','/10.webp','/11.webp','/12.webp','/13.webp',
+    '/7.webp','/8.webp','/9.webp','/Townhouse/t2i.png','/Townhouse/t6.jpg','/12.webp','/13.webp','/10.webp',
+    '/Townhouse/t11.png','/Townhouse/t12.png','/Townhouse/t15.png',
   ];
 
   return (

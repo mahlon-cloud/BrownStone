@@ -1,4 +1,6 @@
 import '../styles/globals.css';
+import "../styles/floorplan.css";
+import "../styles/slider.css";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 

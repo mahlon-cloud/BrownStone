@@ -23,7 +23,7 @@ export default function Navbar() {
     {
       label: 'Properties',
       children: [
-        { label: 'Townhouses', href: '/townhouse' },
+        { label: 'Celestia', href: '/celestia' },
       ]
     },
     { label: 'Services', href: '/services' },

@@ -75,16 +75,7 @@ export default function TeamPages() {
     </p>
   </div>
 
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-  {/* Business Development */}
-  <div className="border border-[#e5e7eb] rounded-lg p-4 text-center">
-    <h4 className="text-xl font-semibold text-[#012e44] leading-tight">
-      Danielle Kyei-Duah
-    </h4>
-    <p className="text-sm text-[#2a4a59] mt-1">
-      Business Development Analyst
-    </p>
-  </div>
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
 
   {/* Creative Developer */}
   <div className="border border-[#e5e7eb] rounded-lg p-4 text-center">

@@ -1,0 +1,50 @@
+
+
+.hotspot {
+  position: absolute;
+  padding: 8px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #411600;
+  background: none;
+  border: none;
+  border-radius: 80px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  min-width: 20px;
+  z-index: 1;
+}
+
+.neon-pulse {
+  background: #ffffff;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  overflow: visible;
+}
+
+.neon-pulse::before,
+.neon-pulse::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 2px solid #ffffff;
+  border-radius: inherit;
+  animation: pulseOut 2s ease-out infinite;
+  opacity: 0;
+}
+
+.neon-pulse::after {
+  animation-delay: 1s;
+}
+
+@keyframes pulseOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}

@@ -14,27 +14,12 @@ const projects = [
     id: 'celestia',
     title: 'Celestia — Akosombo',
     description: 'A modern lakeside community combining luxury, wellness, and nature in a private enclave',
-    images: [
-      { src: '/za4.jpg', alt: 'Celestia view 1' },
-      { src: '/71.webp', alt: 'Celestia view 2' },
-      { src: '/51.webp', alt: 'Celestia view 3' },
-      { src: '/151.webp', alt: 'Celestia view 4' },
-      { src: '/221.webp', alt: 'Celestia view 5' },
-      { src: '/231.webp', alt: 'Celestia view 6' },
-      { src: '/241.webp', alt: 'Celestia view 7' },
-      { src: '/291.webp', alt: 'Celestia view 8' },
-      { src: '/311.webp', alt: 'Celestia view 9' },
-      { src: '/351.webp', alt: 'Celestia view 10' },
-      { src: '/361.webp', alt: 'Celestia view 11' },
-      { src: '/391.webp', alt: 'Celestia view 12' },
-      { src: '/431.webp', alt: 'Celestia view 13' },
-      { src: '/421.webp', alt: 'Celestia view 14' },
-      { src: '/271.webp', alt: 'Celestia view 15' },
-      { src: '/333.webp', alt: 'Celestia view 16' },
-      { src: '/461.webp', alt: 'Celestia view 17' },
-    ],
+    images: [],
   },
   {
+    videos: [
+      { src: '/eastlegon/Legon.mp4', title: 'EAST LEGON TRIO' },
+    ],
     id: 'eastlegon',
     title: 'East Legon Trio',
     description: 'A trio of high-end townhomes built for legacy living and comfort',
@@ -47,8 +32,11 @@ const projects = [
       { src: '/leg2.jpeg', alt: 'East Legon view 6' },
       { src: '/leg3.jpeg', alt: 'East Legon view 7' },
       { src: '/leg4.jpeg', alt: 'East Legon view 8' },
+      { src: '/eastlegon/leg5.jpg', alt: 'East Legon view 9' },
+      { src: '/eastlegon/leg6.jpg', alt: 'East Legon view 10' },
+      { src: '/eastlegon/leg7.jpg', alt: 'East Legon view 11' },
+      { src: '/eastlegon/leg8.jpg', alt: 'East Legon view 12' },
     ],
-    videos: [],
   },
 ];
 
@@ -108,26 +96,30 @@ export default function PortfolioPage() {
 
                    
                     {/* VIDEOS */}
-{project.videos.map((vid, idx) => (
-  <div
-    key={`${project.id}-${idx}`}
-    className="relative rounded-lg overflow-hidden cursor-pointer group"
-    onClick={() => setVideoModal(vid.src)}
-  >
-    {/* Thumbnail image */}
-    <Image
-      src={`/thumbnails/${vid.src.replace('.mp4', '.webp')}`}
-      alt={vid.title}
-      width={800}
-      height={600}
-      loading="lazy"
-      className="w-full h-32 md:h-40 object-cover transition-transform duration-500 group-hover:scale-105"
-    />
-    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-      <span className="text-white font-semibold">▶ {vid.title}</span>
+{project.videos.map((vid, idx) => {
+  const videoPath = vid.src.startsWith('/') ? vid.src : `/${vid.src}`;
+  const thumbnailPath = `/thumbnails${videoPath.replace('.mp4', '.webp')}`;
+  return (
+    <div
+      key={`${project.id}-${idx}`}
+      className="relative rounded-lg overflow-hidden cursor-pointer group"
+      onClick={() => setVideoModal(videoPath)}
+    >
+      {/* Thumbnail image */}
+      <Image
+        src={thumbnailPath}
+        alt={vid.title}
+        width={800}
+        height={600}
+        loading="lazy"
+        className="w-full h-32 md:h-40 object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+        <span className="text-white font-semibold">▶ {vid.title}</span>
+      </div>
     </div>
-  </div>
-))}
+  );
+})}
 
 {/* VIDEO MODAL */}
 {videoModal && (
