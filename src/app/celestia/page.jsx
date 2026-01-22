@@ -1,6 +1,6 @@
 'use client';
 
-import FloorPlan from "./../../components/Floorplan";
+import FloorPlan from "./../../components/FloorPlan";
 import React, { useEffect, useState } from 'react';
 
 
@@ -10,8 +10,7 @@ export default function Celestia() {
       {/* Spacer to push content below fixed navbar */}
       <div className="h-[80px] shrink-0" />
       <main className="flex-1 min-h-[calc(100vh-80px)] w-full">
-        <FloorPlan />
-        
+        <FloorPlan />      
       </main>
     </div>
   );
