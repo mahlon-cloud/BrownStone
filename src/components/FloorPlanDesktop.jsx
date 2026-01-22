@@ -1,19 +1,12 @@
 'use client';
 
-import { useEffect, useState } from "react";
-import FloorPlanDesktop from "./FloorPlanDesktop";
-import FloorPlanMobile from "./FloorPlanMobile";
+import { useState } from "react";
+import Hotspot from "./Hotspot";
+import ImageSlider from "./ImageSlider";
 import Banner1 from "./Banner";
 
 export default function FloorPlan() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const onResize = () => setIsMobile(window.innerWidth < 768);
-    onResize();
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
+  const [activeRoom, setActiveRoom] = useState(null);
 
   const hotspots = [
     {
@@ -99,13 +92,21 @@ export default function FloorPlan() {
   ];
 
   return (
-    <>
+    <div>
       <Banner1 />
-      {isMobile ? (
-        <FloorPlanMobile hotspots={hotspots} />
-      ) : (
-        <FloorPlanDesktop hotspots={hotspots} />
+      <img src="/plan4.jpg"/>
+
+      {hotspots.map((spot) => (
+        <Hotspot key={spot.id} spot={spot} onClick={setActiveRoom} />
+      ))}
+
+      {activeRoom && (
+        <ImageSlider
+          images={activeRoom.images}
+          title={activeRoom.name}
+          onClose={() => setActiveRoom(null)}
+        />
       )}
-    </>
+    </div>
   );
 }
