@@ -17,9 +17,7 @@ const projects = [
     images: [],
   },
   {
-    videos: [
-      { src: '/eastlegon/Legon1.mp4', title: 'EAST LEGON TRIO' },
-    ],
+    videos: [],
     id: 'eastlegon',
     title: 'East Legon Trio',
     description: 'A trio of high-end townhomes built for legacy living and comfort',

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 const COLORS = {
@@ -28,7 +28,6 @@ function useScrollReveal() {
         const ScrollReveal = (await import('scrollreveal')).default;
         const sr = ScrollReveal();
 
-        // Animate gallery items
         sr.reveal('.gallery-item', {
           distance: '80px',
           duration: 1200,
@@ -50,15 +49,15 @@ function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24 grid gap-8 lg:grid-cols-2 items-center">
-        
-        {/* LEFT SIDE TEXT */}
+
+        {/* LEFT */}
         <div className="space-y-6">
           <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight" style={{ color: COLORS.deep }}>
             Celestia Townhouses
           </h1>
 
           <p className="text-lg text-gray-700 max-w-xl">
-            <span className='font-semibold'>
+            <span className="font-semibold">
               Modern, elegant townhouses designed for lakeside living in Akosombo
             </span>
             <br /><br />
@@ -76,9 +75,9 @@ function Hero() {
             </a>
 
             <a
-            href="/Celestia Townhouse Digital Brochure.pdf"
-            download="Celestia Townhouse Digital Brochure.pdf"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-lg font-semibold border"
+              href="/Celestia Townhouse Digital Brochure.pdf"
+              download
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg font-semibold border"
             >
               Download Brochure
             </a>
@@ -89,7 +88,7 @@ function Hero() {
           </div>
         </div>
 
-        {/* RIGHT SIDE HERO IMAGE */}
+        {/* RIGHT */}
         <div className="relative">
           <div className="relative rounded-2xl overflow-hidden shadow-lg">
             <Image
@@ -101,27 +100,21 @@ function Hero() {
               priority
             />
 
-            {/* TEXT ON IMAGE */}
             <div className="absolute left-1/2 -translate-x-1/2 top-4 lg:top-10 text-white text-center z-20">
-              <div className="text-2xl font-semibold drop-shadow-xl">2 Bedroom Townhouses</div>
+              <div className="text-2xl font-semibold drop-shadow-xl">
+                2 Bedroom Townhouses
+              </div>
               <div className="text-sm text-gray-200 drop-shadow-lg mt-1">
-                Rent at your earliest convenience <br /> Master Suite • Open Terrace • Lobby
+                Rent at your earliest convenience <br />
+                Master Suite • Open Terrace • Lobby
               </div>
             </div>
 
-            {/* FLOORPLAN IMAGES */}
-            <div
-              className="
-                absolute left-1/2 -translate-x-1/2 bottom-4
-                bg-white/80 backdrop-blur-sm 
-                rounded-xl p-3 shadow-md 
-                flex items-center justify-center gap-2
-                w-[92%] max-w-xs md:max-w-xl
-              "
-            >
-              <Image src="/Floorplan1.jpg" alt="Floorplan 1" width={100} height={80} className="object-contain md:w-120 rounded-xl" />
-              <Image src="/Floorplan2.jpg" alt="Floorplan 2" width={100} height={80} className="object-contain md:w-120 rounded-xl" />
-              <Image src="/bvc.webp" alt="Floorplan 3" width={80} height={80} className="object-contain md:w-90 rounded-xl" />
+            {/* FLOORPLANS */}
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-4 bg-white/80 backdrop-blur-sm rounded-xl p-3 shadow-md flex gap-2 w-[92%] max-w-xs md:max-w-xl">
+              <Image src="/Floorplan1.jpg" alt="Floorplan 1" width={100} height={80} className="rounded-xl" />
+              <Image src="/Floorplan2.jpg" alt="Floorplan 2" width={100} height={80} className="rounded-xl" />
+              <Image src="/bvc.webp" alt="Floorplan 3" width={80} height={80} className="rounded-xl" />
             </div>
           </div>
         </div>
@@ -132,39 +125,68 @@ function Hero() {
 }
 
 // *************************************************
-// GALLERY SECTION (with ScrollReveal)
+// GALLERY SECTION (WITH IMAGE MODAL)
 // *************************************************
 function GalleryGrid() {
   useScrollReveal();
+  const [imageModal, setImageModal] = useState(null);
 
   const gallery = [
     '/ab (8).webp','/ab (2).webp','/ab (7).webp','/ab (1).webp',
-    '/7.webp','/8.webp','/9.webp','/Townhouse/t2i.png','/Townhouse/t6.jpg','/12.webp','/13.webp','/10.webp',
+    '/7.webp','/8.webp','/9.webp','/Townhouse/t2i.png','/Townhouse/t6.jpg',
+    '/12.webp','/13.webp','/10.webp',
     '/Townhouse/t11.png','/Townhouse/t12.png','/Townhouse/t15.png',
   ];
 
   return (
     <section className="py-12 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        
+
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold">Gallery</h2>
-          <p className="text-gray-600 mt-2">Explore our townhouse designs and surroundings.</p>
+          <p className="text-gray-600 mt-2">
+            Explore our townhouse designs and surroundings.
+          </p>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
           {gallery.map((img, idx) => (
-            <div key={idx} className="gallery-item rounded-lg overflow-hidden shadow-sm">
+            <div
+              key={idx}
+              className="gallery-item relative rounded-lg overflow-hidden shadow-sm cursor-pointer group"
+              onClick={() => setImageModal(img)}
+            >
               <Image
                 src={img}
                 alt={`Gallery ${idx}`}
                 width={300}
                 height={200}
-                className="w-full h-32 sm:h-40 object-cover"
+                className="w-full h-32 sm:h-40 object-cover transition-transform duration-500 group-hover:scale-110"
               />
+              <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                <span className="text-white text-sm font-semibold">View</span>
+              </div>
             </div>
           ))}
         </div>
+
+        {/* IMAGE MODAL */}
+        {imageModal && (
+          <div
+            className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+            onClick={() => setImageModal(null)}
+          >
+            <div onClick={(e) => e.stopPropagation()}>
+              <Image
+                src={imageModal}
+                alt="Gallery Full View"
+                width={1600}
+                height={1200}
+                className="max-w-[95vw] max-h-[75vh] w-auto h-auto rounded-lg shadow-xl"
+              />
+            </div>
+          </div>
+        )}
 
       </div>
     </section>
@@ -189,10 +211,12 @@ function FeaturesGrid() {
   return (
     <section className="py-12 bg-white">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        
+
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold">Key Features</h2>
-          <p className="text-gray-600 mt-2">Everything designed for comfort, aesthetics and lasting value.</p>
+          <p className="text-gray-600 mt-2">
+            Everything designed for comfort, aesthetics and lasting value.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -220,55 +244,9 @@ function OffPlanNotice() {
     <section className="py-10">
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
         <div className="rounded-2xl border p-6 lg:p-8 bg-gradient-to-r from-white to-orange-50">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:gap-6">
-
-            <div className="lg:flex-1">
-              <h3 className="text-xl font-bold">Off-Plan Customization — Build Your Vision</h3>
-              <p className="mt-2 text-gray-700">
-                Reserve early and personalize your townhouse before construction starts.
-                Choose interior themes, kitchen packages, floor finishes and smart-home options.
-              </p>
-
-              <ul className="mt-3 text-sm text-gray-600 grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <li>• Interior color themes</li>
-                <li>• Kitchen/cabinet upgrades</li>
-                <li>• Flooring & tiles</li>
-                <li>• Wardrobe layouts</li>
-                <li>• Smart-home integrations</li>
-                <li>• and more.......</li>
-              </ul>
-            </div>
-
-            <div className="mt-4 lg:mt-0 lg:w-1/3">
-              <a
-                href="/book"
-                className="block text-center px-5 py-3 rounded-lg font-semibold"
-                style={{ background: COLORS.primary, color: 'white' }}
-              >
-                Contact Sales to Customize
-              </a>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// *************************************************
-// CTA SECTION
-// *************************************************
-function CTA() {
-  return (
-    <section className="flex justify-center py-12 bg-gradient-to-r from-white to-orange-50">
-      <div className="max-w-5xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div>
-          <h3 className="text-xl font-bold">
-            Reserve a Unit Today & Lock In Pre-Construction Pricing
-          </h3>
-          <p className="text-gray-600 mt-1">
-            Limited units available — early buyers enjoy flexible payment plans.
+          <h3 className="text-xl font-bold">Off-Plan Customization — Build Your Vision</h3>
+          <p className="mt-2 text-gray-700">
+            Reserve early and personalize your townhouse before construction starts.
           </p>
         </div>
       </div>
@@ -277,7 +255,22 @@ function CTA() {
 }
 
 // *************************************************
-// MAIN PAGE EXPORT
+// CTA
+// *************************************************
+function CTA() {
+  return (
+    <section className="flex justify-center py-12 bg-gradient-to-r from-white to-orange-50">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+        <h3 className="text-xl font-bold">
+          Reserve a Unit Today & Lock In Pre-Construction Pricing
+        </h3>
+      </div>
+    </section>
+  );
+}
+
+// *************************************************
+// MAIN EXPORT
 // *************************************************
 export default function TownhousesPage() {
   return (
