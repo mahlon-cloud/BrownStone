@@ -10,7 +10,6 @@ import Cert from '../components/cert';
 import Service1 from '../components/Pages/Services_body';
 import FixedImage from '../components/fixed';
 import CTA from '../components/CTA';
-import Testimonial from '../components/Testimonial';
 import AdBanner from '../components/AdBanner';
 import Footer from '../components/Footer';
 
@@ -25,7 +24,6 @@ export default function App() {
         <Service1/>
         <AdBanner/>
         <CTA/>
-        <Testimonial/>
       </main>
     </div>
   );
