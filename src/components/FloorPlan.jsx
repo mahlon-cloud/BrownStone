@@ -98,14 +98,12 @@ export default function FloorPlan() {
     },
   ];
 
-  return (
-    <>
-      <Banner1 />
-      {isMobile ? (
-        <FloorPlanMobile hotspots={hotspots} />
-      ) : (
-        <FloorPlanDesktop hotspots={hotspots} />
-      )}
-    </>
-  );
+  return isMobile ? (
+  <FloorPlanMobile hotspots={hotspots} />
+) : (
+  <>
+    <Banner1 />
+    <FloorPlanDesktop hotspots={hotspots} />
+  </>
+);
 }
